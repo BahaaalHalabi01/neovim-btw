@@ -2,7 +2,7 @@
 
 # *I use neovim by the way*
 
-After My first take at creating a neovim config from scratch, inspired by **ThePrimeagen**,**TJ DeVries** channels, and others on youtube. I had a **great** initial time with neovim. using a previous config for sometime, and improving it with understanding how neovim works.
+After My first take at creating a neovim config from scratch, inspired by **ThePrimeagen**,**TJ DeVries** channels, and others on youtube. I had a **great** initial time with neovim. using a previous [config](https://github.com/BahaaalHalabi01/init.lua) for sometime, and improving it with understanding how neovim works.
 
 I ended up with this.
 
