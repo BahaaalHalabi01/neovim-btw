@@ -1,11 +1,11 @@
 require('rose-pine').setup({
-    disable_background = true,
+    disable_background =false,
 	--- @usage 'auto'|'main'|'moon'|'dawn'
 	variant = 'main',
 	--- @usage 'main'|'moon'|'dawn'
 	dark_variant = 'main',
 	bold_vert_split =false,
-  dim_nc_background =true,
+  dim_nc_background =false,
 	disable_float_background =false,
 	disable_italics = false,
 	--- @usage string hex value or named color from rosepinetheme.com/palette

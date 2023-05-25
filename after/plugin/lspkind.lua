@@ -5,14 +5,14 @@ lspkind.init({
   -- enables text annotations
   --
   -- default: true
-  mode = 'default',
+  mode = 'symbol',
 
   -- default symbol map
   -- can be either 'default' (requires nerd-fonts font) or
   -- 'codicons' for codicon preset (requires vscode-codicons font)
   --
   -- default: 'default'
-  preset = 'default',
+  preset = 'codicons',
 
   -- override preset symbols
   --
