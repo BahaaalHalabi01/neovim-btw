@@ -1,11 +1,8 @@
 local status, mason = pcall(require, "mason")
-if (not status) then return end
 local status2, lspconfig = pcall(require, "mason-lspconfig")
-if (not status2) then return end
 
 mason.setup({
     ui = {
-        -- Whether to automatically check for new versions when opening the :Mason window.
         check_outdated_packages_on_open = true,
 
         -- The border to use for the UI window. Accepts same border values as |nvim_open_win()|. border = "rounded",
@@ -29,5 +26,5 @@ mason.setup({
 })
 
 lspconfig.setup {
-  automatic_installation = true
+  automatic_installation = true,
 }
