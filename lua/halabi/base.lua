@@ -9,8 +9,8 @@ vim.wo.number = true
 vim.opt.nu = true
 vim.opt.relativenumber = true
 -- undo tree add later
---/vim.opt.backup = false
---//vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+-- vim.opt.backup = false
+-- vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
 vim.o.completeopt = 'menuone,noselect'
@@ -35,8 +35,6 @@ vim.opt.cmdheight = 1
 vim.opt.laststatus = 2
 vim.opt.expandtab = true
 vim.opt.scrolloff = 10
-vim.opt.shell = 'fish'
-vim.opt.backupskip = { '/tmp/*', '/private/tmp/*' }
 vim.opt.inccommand = 'split'
 vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
 vim.opt.smarttab = true
@@ -51,12 +49,6 @@ vim.opt.wildignore:append { '*/node_modules/*' }
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
-
--- Turn off paste mode when leaving insert
-vim.api.nvim_create_autocmd("InsertLeave", {
-  pattern = '*',
-  command = "set nopaste"
-})
 
 -- Add asterisks in block comments
 vim.opt.formatoptions:append { 'r' }
