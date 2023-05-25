@@ -101,6 +101,7 @@ nvim_lsp.lua_ls.setup {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     on_attach(client, bufnr)
+    enable_format_on_save(client, bufnr)
   end,
   settings = {
     Lua = {
