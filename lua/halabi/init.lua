@@ -1,3 +1,3 @@
 require("halabi.base")
-require("halabi.maps")
-require("halabi.plugins")
+require("halabi.remaps")
+require("halabi.packer")

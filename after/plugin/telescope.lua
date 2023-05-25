@@ -48,23 +48,24 @@ vim.keymap.set('n', ';f',
       no_ignore = false,
       hidden = true
     })
-  end)
+  end,{desc="find files"})
 vim.keymap.set('n', ';r', function()
   builtin.live_grep()
-end)
-vim.keymap.set('n', '\\\\', function()
+end,{desc="live grep"})
+vim.keymap.set('n', ';\\', function()
   builtin.buffers()
-end)
+end,{desc = "current buffers"})
 vim.keymap.set('n', ';t', function()
   builtin.help_tags()
-end)
+end,{desc=" help tags"})
 vim.keymap.set('n', ';;', function()
   builtin.resume()
-end)
+end,{desc="resume"})
 vim.keymap.set('n', ';e', function()
   builtin.diagnostics()
-end)
-vim.keymap.set("n", "sf", function()
+end,{desc = "diagnostics"})
+vim.keymap.set("n", "<leader>pv", function()
+
   telescope.extensions.file_browser.file_browser({
     path = "%:p:h",
     cwd = telescope_buffer_dir(),
@@ -73,6 +74,7 @@ vim.keymap.set("n", "sf", function()
     grouped = true,
     previewer = false,
     initial_mode = "normal",
-    layout_config = { height = 40 }
+    layout_config = { height = 40 },
+        winblend = 10,
   })
-end)
+end,{desc = "file browser"})

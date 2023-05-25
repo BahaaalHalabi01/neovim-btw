@@ -8,10 +8,10 @@ vim.cmd [[packadd packer.nvim]]
 
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
-  use {
-    'svrana/neosolarized.nvim',
-    requires = { 'tjdevries/colorbuddy.nvim' }
-  }
+  
+  use('xiyaowong/transparent.nvim')
+  use("akinsho/toggleterm.nvim")
+  use({ 'rose-pine/neovim', as = 'rose-pine' })
   use 'wakatime/vim-wakatime'
   use 'nvim-lualine/lualine.nvim'       -- Statusline
   use 'nvim-lua/plenary.nvim'           -- Common utilities
@@ -39,6 +39,7 @@ packer.startup(function(use)
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
   use 'kyazdani42/nvim-web-devicons' -- File icons
+  use('theprimeagen/harpoon')
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
   use 'windwp/nvim-autopairs'
@@ -48,15 +49,16 @@ packer.startup(function(use)
       'JoosepAlviste/nvim-ts-context-commentstring'
     }
   }
-  use 'norcalli/nvim-colorizer.lua'
   use 'folke/zen-mode.nvim'
   use({
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
   })
   use 'akinsho/nvim-bufferline.lua'
-  -- use 'github/copilot.vim'
 
   use 'lewis6991/gitsigns.nvim'
+    use('kdheepak/lazygit.nvim')
+      use('leafOfTree/vim-svelte-plugin')
+      use("Shatur/neovim-session-manager");
   use 'dinhhuy258/git.nvim' -- For git blame & browse
 end)
