@@ -8,7 +8,7 @@ vim.cmd [[packadd packer.nvim]]
 
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
-  
+
   use('xiyaowong/transparent.nvim')
   use("akinsho/toggleterm.nvim")
   use({ 'rose-pine/neovim', as = 'rose-pine' })
@@ -22,6 +22,7 @@ packer.startup(function(use)
   use 'neovim/nvim-lspconfig'           -- LSP
   use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
   use 'williamboman/mason.nvim'
+  use('MunifTanjim/prettier.nvim')
   use 'williamboman/mason-lspconfig.nvim'
   use 'glepnir/lspsaga.nvim' -- LSP UIs
   use 'L3MON4D3/LuaSnip'
@@ -38,6 +39,7 @@ packer.startup(function(use)
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
   use 'kyazdani42/nvim-web-devicons' -- File icons
+  -- use 'mortepau/codicons.nvim'
   use('theprimeagen/harpoon')
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
@@ -56,8 +58,8 @@ packer.startup(function(use)
   use 'akinsho/nvim-bufferline.lua'
 
   use 'lewis6991/gitsigns.nvim'
-    use('kdheepak/lazygit.nvim')
-      use('leafOfTree/vim-svelte-plugin')
-      use("Shatur/neovim-session-manager");
+  use('kdheepak/lazygit.nvim')
+  use('leafOfTree/vim-svelte-plugin')
+  use("Shatur/neovim-session-manager");
   use 'dinhhuy258/git.nvim' -- For git blame & browse
 end)
