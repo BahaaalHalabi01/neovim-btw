@@ -6,6 +6,8 @@ saga.setup({
 })
 
 local opts = { noremap = true, silent = true, desc = '' }
+opts.desc = "lspsaga diagnostic_jump_prev"
+vim.keymap.set('n', '<C-n>', '<Cmd>Lspsaga diagnostic_jump_prev<CR>', opts)
 opts.desc = "lspsaga diagnostic_jump_next"
 vim.keymap.set('n', '<C-m>', '<Cmd>Lspsaga diagnostic_jump_next<CR>', opts)
 opts.desc = "lspsaga show_buf_diagnostics"

@@ -9,9 +9,10 @@ vim.cmd [[packadd packer.nvim]]
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
-  use('xiyaowong/transparent.nvim')
+  -- use('xiyaowong/transparent.nvim')
   use("akinsho/toggleterm.nvim")
-  use({ 'rose-pine/neovim', as = 'rose-pine' })
+  -- use({ 'rose-pine/neovim', as = 'rose-pine' })
+  use 'morhetz/gruvbox' 
   use 'wakatime/vim-wakatime'
   use 'nvim-lualine/lualine.nvim'       -- Statusline
   use 'nvim-lua/plenary.nvim'           -- Common utilities

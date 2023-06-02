@@ -38,6 +38,7 @@ local on_attach = function(client, bufnr)
   -- reuse_win = true,
   -- on_list = on_list
   -- }), '[G]oto [D]efinition')
+  nmap('<leader>lx', vim.lsp.buf.code_action, 'X factor')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
   nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
   nmap('<leader>lD', vim.lsp.buf.type_definition, '[L]SP Type [D]efinition')

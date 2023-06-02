@@ -104,6 +104,11 @@ _G.packer_plugins = {
     path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  gruvbox = {
+    loaded = true,
+    path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/gruvbox",
+    url = "https://github.com/morhetz/gruvbox"
+  },
   harpoon = {
     loaded = true,
     path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/harpoon",
@@ -209,11 +214,6 @@ _G.packer_plugins = {
     path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/prettier.nvim",
     url = "https://github.com/MunifTanjim/prettier.nvim"
   },
-  ["rose-pine"] = {
-    loaded = true,
-    path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/rose-pine",
-    url = "https://github.com/rose-pine/neovim"
-  },
   ["telescope-file-browser.nvim"] = {
     loaded = true,
     path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
@@ -228,11 +228,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
-  },
-  ["transparent.nvim"] = {
-    loaded = true,
-    path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/transparent.nvim",
-    url = "https://github.com/xiyaowong/transparent.nvim"
   },
   ["vim-svelte-plugin"] = {
     loaded = true,
