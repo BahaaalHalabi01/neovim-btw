@@ -12,7 +12,7 @@ packer.startup(function(use)
   -- use('xiyaowong/transparent.nvim')
   use("akinsho/toggleterm.nvim")
   -- use({ 'rose-pine/neovim', as = 'rose-pine' })
-  use 'morhetz/gruvbox' 
+  use { "ellisonleao/gruvbox.nvim" }
   use 'wakatime/vim-wakatime'
   use 'nvim-lualine/lualine.nvim'       -- Statusline
   use 'nvim-lua/plenary.nvim'           -- Common utilities
@@ -26,7 +26,13 @@ packer.startup(function(use)
   use('MunifTanjim/prettier.nvim')
   use 'williamboman/mason-lspconfig.nvim'
   use 'glepnir/lspsaga.nvim' -- LSP UIs
-  use 'L3MON4D3/LuaSnip'
+  use({
+	"L3MON4D3/LuaSnip",
+	-- follow latest release.
+	tag = "v<CurrentMajor>.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+	-- install jsregexp (optional!:).
+	run = "make install_jsregexp"
+})
   use {
     "folke/which-key.nvim",
     config = function()

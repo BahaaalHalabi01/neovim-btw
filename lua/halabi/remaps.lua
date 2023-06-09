@@ -8,21 +8,21 @@ keymap.set('v', 'x', '"_x',{desc = "delete and don't yank"})
 keymap.set('n', '+', '<C-a>')
 keymap.set('n', '-', '<C-x>')
 
--- Delete a word backwards
-keymap.set('n', 'dw', 'vb"_d')
+keymap.set('n', 'db', 'vb"_di',{desc = "Delete a word backwards and enter insert"})
+keymap.set('n', 'dw', 'vw"_di',{desc = "Delete a word infront and enter insert"})
 
 -- Select all
-keymap.set('n', '<C-a>', 'gg<S-v>G')
+keymap.set('n', '<leader>a', 'gg<S-v>G')
 
 -- Split window
-keymap.set("n", "<C-\\>", "<cmd>vsplit<cr>", { desc = "Vertical Split" })
+-- can be done with ctrl +4 ?
+-- keymap.set("n", "<C-\\>", "<cmd>vsplit<cr>", { desc = "Vertical Split" })
 
+vim.keymap.set("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<cr>", { desc = "Git toggle line blame" })
 vim.g.mapleader = " "
 
 vim.keymap.set("n", "<C-\\>", "<cmd>vsplit<cr>", { desc = "Vertical Split" })
 
-vim.keymap.set("n", "<C-h>", '<C-W>h', { desc = 'left window' })
-vim.keymap.set("n", "<C-l>", '<C-W>l', { desc = 'right window' })
 vim.keymap.set("n", "<C-s>", "<Cmd>w!<CR><Esc>", { desc = "save" })
 vim.keymap.set("i", "<C-s>", "<Cmd>w!<CR><Esc>", { desc = " save insert" })
 
@@ -34,6 +34,19 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("v", "y", "y0<Esc>", { desc = "Yank and reposition cursor" })
+
+vim.keymap.set("n", "<esc>", function()
+  local function close_floating()
+  for _, win in pairs(vim.api.nvim_list_wins()) do
+    if vim.api.nvim_win_get_config(win).relative == "win" then
+      vim.api.nvim_win_close(win, false)
+    end
+  end
+end
+close_floating()
+  vim.cmd(":noh")
+end, { silent = true, desc = "Remove Search Highlighting, Dismiss Popups" })
 
 
 -- greatest remap ever
@@ -50,10 +63,25 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
--- use telescope for now
--- vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
--- { desc = 'search and replace under cursor' })
+vim.keymap.set("n", "<leader>s", [[:%s@\<<C-r><C-w>\>@<C-r><C-w>@gI<Left><Left><Left>]],
+{ desc = 'search and replace under cursor' })
+
+vim.keymap.set('v',"<C-r>",[[y<ESC>:%s@\<<C-r><C-w>\>@<C-r><C-w>@gI<Left><Left><Left>]])
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+
+-- These two keep the search in the middle of the screen.
+vim.keymap.set("n", "n", function()
+  vim.cmd("silent normal! nzz")
+end)
+
+vim.keymap.set("n", "N", function()
+  vim.cmd("silent normal! Nzz")
+end)
+
+
+vim.keymap.set({ "n", "x" }, "[p", '<Cmd>exe "put! " . v:register<CR>', { desc = "Paste Above" })
+vim.keymap.set({ "n", "x" }, "]p", '<Cmd>exe "put "  . v:register<CR>', { desc = "Paste Below" })

@@ -1,62 +1,63 @@
+local opt = vim.opt -- to set options
 vim.cmd("autocmd!")
 
+opt.guicursor =
+  "n-v-c-sm:block-nCursor-blinkwait50-blinkon50-blinkoff50,i-ci-ve:ver25-Cursor-blinkon100-blinkoff100,r-cr-o:hor20"
 vim.scriptencoding = 'utf-8'
-vim.opt.encoding = 'utf-8'
-vim.opt.fileencoding = 'utf-8'
-vim.o.background = 'dark'
+opt.encoding = 'utf-8'
+opt.fileencoding = 'utf-8'
 
 vim.wo.number = true
 
-vim.opt.nu = true
-vim.opt.relativenumber = true
+opt.nu = true
+opt.relativenumber = true
 -- undo tree add later
--- vim.opt.backup = false
--- vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.undofile = true
+ -- .opt.backup = false
+ -- .opt.undodir = os.getenv("HOME") .. "/./undodir"
+opt.undofile = true
 
-vim.o.completeopt = 'menuone,noselect'
-
-vim.opt.scrolloff = 8
-vim.opt.signcolumn = "yes"
-vim.opt.isfname:append("@-@")
-
-vim.opt.updatetime = 50
-
-vim.opt.colorcolumn = "80"
-
+vim.completeopt = 'menuone,noselect'
+vim.g.markdown_fenced_languages = { "html", "javascript", "typescript", "css", "scss", "lua", "vim" }
+vim.o.whichwrap = vim.o.whichwrap .. "<,>" -- Wrap movement between lines in edit mode with arrows
+opt.scrolloff = 8
+opt.signcolumn = "yes"
+opt.isfname:append("@-@")
+opt.clipboard = "unnamedplus"
+opt.updatetime = 50
+opt.timeoutlen = 300 -- The time before a key sequence should complete
+opt.splitright = true -- Put new windows right of current
+opt.colorcolumn = "80"
+vim.o.shortmess = vim.o.shortmess .. "S" -- stops display of currentsearch match in cmdline area
 vim.g.mapleader = " "
-vim.opt.title = true
-vim.opt.autoindent = true
-vim.opt.smartindent = true
-vim.opt.hlsearch =false
-vim.opt.incsearch = true
-vim.opt.backup = false
-vim.opt.showcmd = true
-vim.opt.cmdheight = 1
-vim.opt.laststatus = 2
-vim.opt.expandtab = true
-vim.opt.scrolloff = 8
-vim.opt.inccommand = 'split'
-vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
-vim.opt.smarttab = true
-vim.opt.breakindent = true
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
-vim.opt.wrap = false -- No Wrap lines
-vim.opt.backspace = { 'start', 'eol', 'indent' }
-vim.opt.path:append { '**' } -- Finding files - Search down into subfolders
-vim.opt.wildignore:append { '*/node_modules/*' }
+opt.title = true
+opt.autoindent = true
+opt.smartindent = true
+opt.hlsearch =true
+opt.incsearch = true
+opt.backup = false
+opt.showcmd = true
+opt.cmdheight = 1
+opt.laststatus = 2
+opt.expandtab = true
+opt.scrolloff = 8
+opt.inccommand = 'split'
+opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
+opt.smarttab = true
+opt.breakindent = true
+opt.shiftwidth = 2
+opt.tabstop = 2
+opt.wrap = false -- No Wrap lines
+opt.backspace = { 'start', 'eol', 'indent' }
+opt.path:append { '**' } -- Finding files - Search down into subfolders
+opt.cpoptions:append(">") -- when you yank multiple times into a register, this puts each on a new line
+opt.wildignore:append { '*/node_modules/*' }
 
--- Undercurl
--- vim.cmd([[let &t_Cs = "\e[4:3m"]])
--- vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
 -- Add asterisks in block comments
-vim.opt.formatoptions:append { 'r' }
-
+opt.formatoptions:append { 'r' }
 
 -- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
+-- See `:help .highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
         callback = function()

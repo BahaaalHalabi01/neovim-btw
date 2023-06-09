@@ -1,3 +1,30 @@
+require("gruvbox").setup({
+  undercurl = true,
+  underline = true,
+  bold = true,
+  italic = {
+    strings = true,
+    comments = true,
+    operators = false,
+    folds = true,
+  },
+  strikethrough = true,
+  invert_selection = false,
+  invert_signs = false,
+  invert_tabline = false,
+  invert_intend_guides = false,
+  inverse = true, -- invert background for search, diffs, statuslines and errors
+  contrast = "", -- can be "hard", "soft" or empty string
+  palette_overrides = {},
+  overrides = {},
+  dim_inactive = false,
+  transparent_mode = false,
+})
+
+vim.o.background = 'dark'
+vim.cmd([[colorscheme gruvbox]])
+vim.api.nvim_set_hl(0, "ColorColumn", { bg = "none" })
+
 -- require('rose-pine').setup({
 --     disable_background =false,
 -- 	--- @usage 'auto'|'main'|'moon'|'dawn'
@@ -39,33 +66,25 @@
 -- 	-- https://github.com/rose-pine/neovim/wiki/Recipes
 --
 -- })
-vim.cmd.colorscheme("gruvbox")
 
 -- Set colorscheme after options
 -- vim.cmd('colorscheme rose-pine')
 
+-- function ColorMyPencils(color)
+-- 	color = color or "rose-pine"
+-- 	vim.cmd.colorscheme(color)
+-- 	-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+-- end
 
- -- require("transparent").setup({
- --   groups = { -- table: default groups
- -- -- 'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
- -- --     'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
- -- --     'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
- -- --     'SignColumn', 'CursorLineNr', 'EndOfBuffer',
- --   },
- --   extra_groups = {
- --   }, -- table: additional groups that should be cleared
- --   exclude_groups = {}, -- table: groups you don't want to clear
- -- })
-
- --
- --     function ColorMyPencils(color) 
- -- 	color = color or "rose-pine"
- -- 	vim.cmd.colorscheme(color)
- --
- -- 	-- vim.api.nvim_set_hl(0, "ColorColumn", { bg = "none" })
- --  -- can't read with transparent / try for now
- -- 	-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
- --
- -- end
-
- -- ColorMyPencils()
+-- ColorMyPencils()
+---- require("transparent").setup({
+--   groups = { -- table: default groups
+-- -- 'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
+-- --     'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
+-- --     'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
+-- --     'SignColumn', 'CursorLineNr', 'EndOfBuffer',
+--   },
+--   extra_groups = {
+--   }, -- table: additional groups that should be cleared
+--   exclude_groups = {}, -- table: groups you don't want to clear
+-- })

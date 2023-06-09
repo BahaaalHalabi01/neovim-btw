@@ -50,4 +50,4 @@ vim.opt.termguicolors = true
 vim.keymap.set('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', {})
 vim.keymap.set('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', {})
 vim.keymap.set("n","<leader>bd","<Cmd>:%bd|e#<CR>",{desc = "close all buffers except current"})
-vim.keymap.set("n","<leader>bc","<Cmd>bd<CR>",{desc = "close buffer"})
+vim.keymap.set("n","<leader>c","<Cmd>:bn|bd#<CR>",{desc = "close buffer"})

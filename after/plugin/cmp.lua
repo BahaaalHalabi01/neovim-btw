@@ -29,50 +29,50 @@ cmp.setup({
   mapping = cmp.mapping.preset.insert({
     -- ['<C-n>'] = cmp.mapping.select_next_item(),
     -- ['<C-p>'] = cmp.mapping.select_prev_item(),
-    -- ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
     ['<C-y>'] = cmp.mapping.confirm({
-      -- behavior = cmp.ConfirmBehavior.Replace,
+      behavior = cmp.ConfirmBehavior.Replace,
       select = true
     }),
     ['<C-n>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
+      if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
+      elseif cmp.visible() then
+        cmp.select_next_item()
       else
         fallback()
       end
     end, { 'i', 's' }),
     ['<C-p>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
+      if luasnip.jumpable(-1) then
         luasnip.jump(-1)
+      elseif cmp.visible() then
+        cmp.select_prev_item()
       else
         fallback()
       end
     end, { 'i', 's' }),
-
   }),
   sources = cmp.config.sources({
+    { name = 'luasnip' },
     { name = 'nvim_lsp' },
     { name = 'buffer' },
-    { name = 'luasnip' },
   }),
   formatting = {
     format = lspkind.cmp_format({
-      maxwidth = 60,
-      before = function(entry, vim_item)
-        vim_item = formatForTailwindCSS(entry, vim_item)
-        return vim_item
-      end
+      maxwidth = 50,
+      ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+      -- before = function(entry, vim_item)
+      --   vim_item = formatForTailwindCSS(entry, vim_item)
+      --   return vim_item
+      -- end
     })
   }
 })
--- vim.cmd [[
---   set completeopt=menuone,noinsert,noselect
---   highlight! default link CmpItemKind CmpItemMenuDefault
--- ]]
+vim.cmd [[
+  set completeopt=menuone,noinsert,noselect
+  highlight! default link CmpItemKind CmpItemMenuDefault
+]]

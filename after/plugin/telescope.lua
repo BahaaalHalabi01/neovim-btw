@@ -34,8 +34,8 @@ telescope.setup {
         },
         ["n"] = {
           -- your custom normal mode mappings
-          ["N"] = fb_actions.create,
-          ["h"] = fb_actions.goto_parent_dir,
+          ["%"] = fb_actions.create,
+          ["-"] = fb_actions.goto_parent_dir,
           ["/"] = function()
             vim.cmd('startinsert')
           end
@@ -66,9 +66,13 @@ vim.keymap.set('n', ';;', function()
   builtin.resume()
 end,{desc="resume"})
 vim.keymap.set('n', ';e', function()
-  builtin.diagnostics()
+  builtin.diagnostics({bufnr = 0})
 end,{desc = "diagnostics"})
 vim.keymap.set("n", "<leader>pv", function()
+
+vim.keymap.set("n", "<leader>m", function()
+  builtin.marks()
+end, { desc = "Browse Marks" })
 
   telescope.extensions.file_browser.file_browser({
     path = "%:p:h",
