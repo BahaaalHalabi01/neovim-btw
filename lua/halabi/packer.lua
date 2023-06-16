@@ -14,25 +14,46 @@ packer.startup(function(use)
   -- use({ 'rose-pine/neovim', as = 'rose-pine' })
   use { "ellisonleao/gruvbox.nvim" }
   use 'wakatime/vim-wakatime'
-  use 'nvim-lualine/lualine.nvim'       -- Statusline
-  use 'nvim-lua/plenary.nvim'           -- Common utilities
-  use 'onsails/lspkind-nvim'            -- vscode-like pictograms
-  use 'hrsh7th/cmp-buffer'              -- nvim-cmp source for buffer words
-  use 'hrsh7th/cmp-nvim-lsp'            -- nvim-cmp source for neovim's built-in LSP
-  use 'hrsh7th/nvim-cmp'                -- Completion
-  use 'neovim/nvim-lspconfig'           -- LSP
-  use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
+  use 'nvim-lualine/lualine.nvim' -- Statusline
+  use 'nvim-lua/plenary.nvim'     -- Common utilities
+  use 'onsails/lspkind-nvim'      -- vscode-like pictograms
+  use 'hrsh7th/cmp-buffer'        -- nvim-cmp source for buffer words
+  use 'hrsh7th/cmp-nvim-lsp'      -- nvim-cmp source for neovim's built-in LSP
+  use 'hrsh7th/nvim-cmp'          -- Completion
+  use 'neovim/nvim-lspconfig'     -- LSP
+  -- use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
   use 'williamboman/mason.nvim'
+  use {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v2.x',
+    requires = {
+      -- LSP Support
+      { 'neovim/nvim-lspconfig' }, -- Required
+      {
+                               -- Optional
+        'williamboman/mason.nvim',
+        run = function()
+          pcall(vim.cmd, 'MasonUpdate')
+        end,
+      },
+      { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+
+      -- Autocompletion
+      { 'hrsh7th/nvim-cmp' }, -- Required
+      { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+      { 'L3MON4D3/LuaSnip' }, -- Required
+    }
+  }
   use('MunifTanjim/prettier.nvim')
   use 'williamboman/mason-lspconfig.nvim'
   use 'glepnir/lspsaga.nvim' -- LSP UIs
   use({
-	"L3MON4D3/LuaSnip",
-	-- follow latest release.
-	tag = "v<CurrentMajor>.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-	-- install jsregexp (optional!:).
-	run = "make install_jsregexp"
-})
+    "L3MON4D3/LuaSnip",
+    -- follow latest release.
+    tag = "v<CurrentMajor>.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!:).
+    run = "make install_jsregexp"
+  })
   use {
     "folke/which-key.nvim",
     config = function()

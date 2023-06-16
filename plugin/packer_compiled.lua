@@ -119,6 +119,11 @@ _G.packer_plugins = {
     path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
     url = "https://github.com/kdheepak/lazygit.nvim"
   },
+  ["lsp-zero.nvim"] = {
+    loaded = true,
+    path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
+    url = "https://github.com/VonHeikemen/lsp-zero.nvim"
+  },
   ["lspkind-nvim"] = {
     loaded = true,
     path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
@@ -153,11 +158,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/neovim-session-manager",
     url = "https://github.com/Shatur/neovim-session-manager"
-  },
-  ["null-ls.nvim"] = {
-    loaded = true,
-    path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
-    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
