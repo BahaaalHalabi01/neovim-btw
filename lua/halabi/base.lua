@@ -27,7 +27,6 @@ opt.updatetime = 50
 opt.timeoutlen = 300 -- The time before a key sequence should complete
 opt.splitright = true -- Put new windows right of current
 opt.colorcolumn = "80"
-vim.o.shortmess = vim.o.shortmess .. "S" -- stops display of currentsearch match in cmdline area
 vim.g.mapleader = " "
 opt.title = true
 opt.autoindent = true

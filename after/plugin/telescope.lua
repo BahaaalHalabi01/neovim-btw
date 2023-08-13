@@ -13,13 +13,24 @@ telescope.setup {
   defaults = {
     mappings = {
       n = {
-        ["q"] = actions.close
+        ["q"] = actions.close,
+        ["cd"] = function(prompt_bufnr)
+          local selection = require("telescope.actions.state").get_selected_entry()
+          local dir = vim.fn.fnamemodify(selection.path, ":p:h")
+          require("telescope.actions").close(prompt_bufnr)
+          -- Depending on what you want put `cd`, `lcd`, `tcd`
+          vim.cmd(string.format("silent lcd %s", dir))
+        end
+      },
+      i = {
+        ["<C-u>"] = false
       },
     },
     file_ignore_patterns = {
       "node%_modules/.*",
-      ".git/*"
-
+      ".git/*",
+      "public/*",
+      "yarn.lock"
     }
   },
   extensions = {
@@ -52,37 +63,36 @@ vim.keymap.set('n', ';f',
     builtin.find_files({
       hidden = true
     })
-  end,{desc="find files"})
+  end, { desc = "find files" })
 vim.keymap.set('n', ';r', function()
   builtin.live_grep()
-end,{desc="live grep"})
+end, { desc = "live grep" })
 vim.keymap.set('n', ';\\', function()
   builtin.buffers()
-end,{desc = "current buffers"})
+end, { desc = "current buffers" })
 vim.keymap.set('n', ';t', function()
   builtin.help_tags()
-end,{desc=" help tags"})
+end, { desc = " help tags" })
 vim.keymap.set('n', ';;', function()
   builtin.resume()
-end,{desc="resume"})
+end, { desc = "resume" })
 vim.keymap.set('n', ';e', function()
-  builtin.diagnostics({bufnr = 0})
-end,{desc = "diagnostics"})
+  builtin.diagnostics({ bufnr = 0 })
+end, { desc = "diagnostics" })
 vim.keymap.set("n", "<leader>pv", function()
-
-vim.keymap.set("n", "<leader>m", function()
-  builtin.marks()
-end, { desc = "Browse Marks" })
+  vim.keymap.set("n", "<leader>m", function()
+    builtin.marks()
+  end, { desc = "Browse Marks" })
 
   telescope.extensions.file_browser.file_browser({
     path = "%:p:h",
     cwd = telescope_buffer_dir(),
-    respect_gitignore =false,
+    respect_gitignore = false,
     hidden = true,
     grouped = true,
     previewer = false,
     initial_mode = "normal",
     layout_config = { height = 40 },
-        winblend = 10,
+    winblend = 10,
   })
-end,{desc = "file browser"})
+end, { desc = "file browser" })

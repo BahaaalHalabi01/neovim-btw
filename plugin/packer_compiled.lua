@@ -229,6 +229,11 @@ _G.packer_plugins = {
     path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
   },
+  ["vim-dbml"] = {
+    loaded = true,
+    path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/vim-dbml",
+    url = "https://github.com/jidn/vim-dbml"
+  },
   ["vim-svelte-plugin"] = {
     loaded = true,
     path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/vim-svelte-plugin",
