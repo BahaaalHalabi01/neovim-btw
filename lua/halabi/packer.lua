@@ -30,27 +30,29 @@ packer.startup(function(use)
       -- LSP Support
       { 'neovim/nvim-lspconfig' }, -- Required
       {
-                               -- Optional
         'williamboman/mason.nvim',
-        run = function()
-          pcall(vim.cmd, 'MasonUpdate')
-        end,
       },
       { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-
       -- Autocompletion
       { 'hrsh7th/nvim-cmp' }, -- Required
       { 'hrsh7th/cmp-nvim-lsp' }, -- Required
       { 'L3MON4D3/LuaSnip' }, -- Required
     }
   }
+  use({
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      -- your configuration comes here
+      -- leave it empty to use the default settings
+    },
+  })
   use('MunifTanjim/prettier.nvim')
   use 'williamboman/mason-lspconfig.nvim'
-  use 'glepnir/lspsaga.nvim' -- LSP UIs
   use({
     "L3MON4D3/LuaSnip",
     -- follow latest release.
-    tag = "v<CurrentMajor>.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    tag = "v2.0.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
     -- install jsregexp (optional!:).
     run = "make install_jsregexp"
   })
@@ -62,12 +64,16 @@ packer.startup(function(use)
       require("which-key").setup {}
     end
   }
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-  }
+   use {
+	 	'nvim-treesitter/nvim-treesitter',
+	 	run = function()
+	 		local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+	 		ts_update()
+	 	end,}
+   use("nvim-treesitter/nvim-treesitter-context")
+   use("nvim-treesitter/playground")
   use 'kyazdani42/nvim-web-devicons' -- File icons
-  -- use 'mortepau/codicons.nvim'
+  use 'mortepau/codicons.nvim'
   use('theprimeagen/harpoon')
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
@@ -87,7 +93,6 @@ packer.startup(function(use)
 
   use 'lewis6991/gitsigns.nvim'
   use('kdheepak/lazygit.nvim')
-  use('leafOfTree/vim-svelte-plugin')
   use("Shatur/neovim-session-manager");
   use 'dinhhuy258/git.nvim' -- For git blame & browse
 end)

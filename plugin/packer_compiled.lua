@@ -94,6 +94,11 @@ _G.packer_plugins = {
     path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["codicons.nvim"] = {
+    loaded = true,
+    path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/codicons.nvim",
+    url = "https://github.com/mortepau/codicons.nvim"
+  },
   ["git.nvim"] = {
     loaded = true,
     path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/git.nvim",
@@ -128,11 +133,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
     url = "https://github.com/onsails/lspkind-nvim"
-  },
-  ["lspsaga.nvim"] = {
-    loaded = true,
-    path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
-    url = "https://github.com/glepnir/lspsaga.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
@@ -184,6 +184,11 @@ _G.packer_plugins = {
     path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
+  ["nvim-treesitter-context"] = {
+    loaded = true,
+    path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
+  },
   ["nvim-ts-autotag"] = {
     loaded = true,
     path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
@@ -203,6 +208,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
+  },
+  playground = {
+    loaded = true,
+    path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/playground",
+    url = "https://github.com/nvim-treesitter/playground"
   },
   ["plenary.nvim"] = {
     loaded = true,
@@ -229,15 +239,15 @@ _G.packer_plugins = {
     path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
   },
+  ["trouble.nvim"] = {
+    loaded = true,
+    path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/trouble.nvim",
+    url = "https://github.com/folke/trouble.nvim"
+  },
   ["vim-dbml"] = {
     loaded = true,
     path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/vim-dbml",
     url = "https://github.com/jidn/vim-dbml"
-  },
-  ["vim-svelte-plugin"] = {
-    loaded = true,
-    path = "/home/bh2_ru/.local/share/nvim/site/pack/packer/start/vim-svelte-plugin",
-    url = "https://github.com/leafOfTree/vim-svelte-plugin"
   },
   ["vim-wakatime"] = {
     loaded = true,

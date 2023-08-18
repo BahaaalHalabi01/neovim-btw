@@ -2,6 +2,7 @@ local status, telescope = pcall(require, "telescope")
 if (not status) then return end
 local actions = require('telescope.actions')
 local builtin = require("telescope.builtin")
+local trouble = require("trouble.providers.telescope")
 
 local function telescope_buffer_dir()
   return vim.fn.expand('%:p:h')
@@ -13,6 +14,7 @@ telescope.setup {
   defaults = {
     mappings = {
       n = {
+        ["<c-t>"] = trouble.open_with_trouble,
         ["q"] = actions.close,
         ["cd"] = function(prompt_bufnr)
           local selection = require("telescope.actions.state").get_selected_entry()
@@ -23,6 +25,7 @@ telescope.setup {
         end
       },
       i = {
+        ["<c-t>"] = trouble.open_with_trouble,
         ["<C-u>"] = false
       },
     },
@@ -58,15 +61,19 @@ telescope.setup {
 
 telescope.load_extension("file_browser")
 
+vim.keymap.set('n', ';g', builtin.git_files, {})
 vim.keymap.set('n', ';f',
   function()
     builtin.find_files({
-      hidden = true
+      hidden = false
     })
   end, { desc = "find files" })
-vim.keymap.set('n', ';r', function()
+vim.keymap.set('n', ';l', function()
   builtin.live_grep()
 end, { desc = "live grep" })
+vim.keymap.set('n', ';r', function()
+  builtin.grep_string({ search = vim.fn.input("Grep > ") })
+end, { desc = "grep string" })
 vim.keymap.set('n', ';\\', function()
   builtin.buffers()
 end, { desc = "current buffers" })
@@ -76,9 +83,9 @@ end, { desc = " help tags" })
 vim.keymap.set('n', ';;', function()
   builtin.resume()
 end, { desc = "resume" })
-vim.keymap.set('n', ';e', function()
-  builtin.diagnostics({ bufnr = 0 })
-end, { desc = "diagnostics" })
+-- vim.keymap.set('n', ';e', function()
+  -- builtin.diagnostics({ bufnr = 0 })
+-- end, { desc = "diagnostics" })
 vim.keymap.set("n", "<leader>pv", function()
   vim.keymap.set("n", "<leader>m", function()
     builtin.marks()
@@ -88,7 +95,7 @@ vim.keymap.set("n", "<leader>pv", function()
     path = "%:p:h",
     cwd = telescope_buffer_dir(),
     respect_gitignore = false,
-    hidden = true,
+    hidden = false,
     grouped = true,
     previewer = false,
     initial_mode = "normal",
