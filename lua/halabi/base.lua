@@ -8,6 +8,7 @@ opt.encoding = 'utf-8'
 opt.fileencoding = 'utf-8'
 
 vim.wo.number = true
+vim.o.pumwidth = 8
 
 opt.nu = true
 opt.relativenumber = true
@@ -40,7 +41,7 @@ opt.laststatus = 2
 opt.expandtab = true
 opt.scrolloff = 8
 opt.inccommand = 'split'
-opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
+opt.ignorecase = false -- Case insensitive searching UNLESS /C or capital in search
 opt.smarttab = true
 opt.breakindent = true
 opt.shiftwidth = 2

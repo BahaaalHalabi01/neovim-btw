@@ -8,15 +8,11 @@ keymap.set('v', 'x', '"_x',{desc = "delete and don't yank"})
 keymap.set('n', '+', '<C-a>')
 keymap.set('n', '-', '<C-x>')
 
+keymap.set('n', '<C-n>', '')
+
 keymap.set('n', 'db', 'vb"_di',{desc = "Delete a word backwards and enter insert"})
 keymap.set('n', 'dw', 'vw"_di',{desc = "Delete a word infront and enter insert"})
 
--- Select all
-keymap.set('n', '<leader>a', 'gg<S-v>G')
-
--- Split window
--- can be done with ctrl +4 ?
--- keymap.set("n", "<C-\\>", "<cmd>vsplit<cr>", { desc = "Vertical Split" })
 
 vim.keymap.set("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<cr>", { desc = "Git toggle line blame" })
 vim.g.mapleader = " "

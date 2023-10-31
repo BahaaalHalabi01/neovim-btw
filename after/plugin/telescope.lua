@@ -61,6 +61,9 @@ telescope.setup {
 
 telescope.load_extension("file_browser")
 
+vim.keymap.set("n", "<leader>q", function()
+    builtin.marks()
+end,{desc='builtin marks'})
 vim.keymap.set('n', ';g', builtin.git_files, {})
 vim.keymap.set('n', ';f',
   function()
@@ -83,15 +86,15 @@ end, { desc = " help tags" })
 vim.keymap.set('n', ';;', function()
   builtin.resume()
 end, { desc = "resume" })
--- vim.keymap.set('n', ';e', function()
-  -- builtin.diagnostics({ bufnr = 0 })
--- end, { desc = "diagnostics" })
-vim.keymap.set("n", "<leader>pv", function()
-  vim.keymap.set("n", "<leader>m", function()
-    builtin.marks()
-  end, { desc = "Browse Marks" })
+vim.keymap.set('n', '<leader>ls', function()
+  builtin.lsp_document_symbols()
+end, { desc = "symbols" })
+vim.keymap.set("n", "<leader>ws", function()
+builtin.lsp_workspace_symbols()
+end, {desc = 'workspace symbol'})
 
-  telescope.extensions.file_browser.file_browser({
+vim.keymap.set("n", "<leader>pv", function()
+telescope.extensions.file_browser.file_browser({
     path = "%:p:h",
     cwd = telescope_buffer_dir(),
     respect_gitignore = false,

@@ -21,7 +21,7 @@ packer.startup(function(use)
   use 'hrsh7th/cmp-nvim-lsp'      -- nvim-cmp source for neovim's built-in LSP
   use 'hrsh7th/nvim-cmp'          -- Completion
   use 'neovim/nvim-lspconfig'     -- LSP
-  use 'jidn/vim-dbml'     -- dbml
+  use 'jidn/vim-dbml'             -- dbml
   use 'williamboman/mason.nvim'
   use {
     'VonHeikemen/lsp-zero.nvim',
@@ -34,18 +34,14 @@ packer.startup(function(use)
       },
       { 'williamboman/mason-lspconfig.nvim' }, -- Optional
       -- Autocompletion
-      { 'hrsh7th/nvim-cmp' }, -- Required
-      { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-      { 'L3MON4D3/LuaSnip' }, -- Required
+      { 'hrsh7th/nvim-cmp' },                  -- Required
+      { 'hrsh7th/cmp-nvim-lsp' },              -- Required
+      { 'L3MON4D3/LuaSnip' },                  -- Required
     }
   }
   use({
     "folke/trouble.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {
-      -- your configuration comes here
-      -- leave it empty to use the default settings
-    },
+    dependencies = { "nvim-tree/nvim-web-devicons" }
   })
   use('MunifTanjim/prettier.nvim')
   use 'williamboman/mason-lspconfig.nvim'
@@ -64,14 +60,14 @@ packer.startup(function(use)
       require("which-key").setup {}
     end
   }
-   use {
-	 	'nvim-treesitter/nvim-treesitter',
-	 	run = function()
-	 		local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-	 		ts_update()
-	 	end,}
-   use("nvim-treesitter/nvim-treesitter-context")
-   use("nvim-treesitter/playground")
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+      ts_update()
+    end, }
+  use("nvim-treesitter/nvim-treesitter-context")
+  use("nvim-treesitter/playground")
   use 'kyazdani42/nvim-web-devicons' -- File icons
   use 'mortepau/codicons.nvim'
   use('theprimeagen/harpoon')
