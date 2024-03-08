@@ -61,7 +61,7 @@ return {
     vim.keymap.set('n', '<leader>ls', function()
       builtin.lsp_document_symbols()
     end, { desc = "symbols" })
-    vim.keymap.set("n", "<leader>ws", function()
+    vim.keymap.set("n", "<leader>lw", function()
       builtin.lsp_workspace_symbols()
     end, { desc = 'workspace symbol' })
   end

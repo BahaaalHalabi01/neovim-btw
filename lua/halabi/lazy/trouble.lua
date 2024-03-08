@@ -39,4 +39,5 @@ return {
     vim.keymap.set("n", "<C-c>", "<Cmd>TroubleClose<Cr>", opts)
   end,
 
+
 }
