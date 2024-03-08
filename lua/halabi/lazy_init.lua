@@ -14,10 +14,3 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({spec = "halabi.lazy",change_detection= {notify = false}})
 
-
-
-
---   'williamboman/mason-lspconfig.nvim',
---         'williamboman/mason.nvim',
---  'lewis6991/gitsigns.nvim',
---]]
