@@ -43,7 +43,7 @@ packer.startup(function(use)
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" }
   })
-  use('MunifTanjim/prettier.nvim')
+  use('sbdchd/neoformat')
   use 'williamboman/mason-lspconfig.nvim'
   use({
     "L3MON4D3/LuaSnip",

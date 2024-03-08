@@ -1,6 +1,5 @@
 local status, cmp = pcall(require, "cmp")
 if (not status) then return end
-local cmp_select_opts = { behavior = cmp.SelectBehavior.Select }
 local lsp = require('lsp-zero').preset({})
 local status, nvim_lsp = pcall(require, "lspconfig")
 if (not status) then return end
@@ -12,13 +11,6 @@ lsp.on_attach(function(client, bufnr)
   lsp.default_keymaps({ buffer = bufnr })
 end)
 
-
-
--- lsp.set_server_config({
---   on_init = function(client)
---     client.server_capabilities.semanticTokensProvider = nil
---   end,
--- })
 
  lsp.format_mapping('<leader>lf', {
    format_opts = {
@@ -32,7 +24,7 @@ end)
  })
 
 lsp.set_preferences({
-  suggest_lsp_servers = false,
+  suggest_lsp_servers = true,
   sign_icons = {
     error = 'E',
     warn = 'W',
@@ -44,26 +36,23 @@ lsp.set_preferences({
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
--- nvim_lsp.svelte.setup {
---   on_attach = on_attach,
---   filetypes = { "svelte" },
---   cmd = { "svelteserver", "--stdio" },
---   root_dir = util.root_pattern('package.json', '.git'),
---   capabilities = capabilities
--- }
 nvim_lsp.tsserver.setup {
   filetypes = { "typescript", "typescriptreact", "javascript" ,"javascriptreact"},
   cmd = { "typescript-language-server", "--stdio" },
-  capabilities = capabilities
+  capabilities = capabilities,
 }
 
--- nvim_lsp.rust_analyzer.setup {
---   -- Server-specific settings. See `:help lspconfig-setup`
---   settings = {
---     ['rust-analyzer'] = {},
---   },
--- }
+ -- nvim_lsp.tailwindcss.setup {
+ --   capabilities = capabilities
+ -- }
 
+ nvim_lsp.rust_analyzer.setup {
+   settings = {
+     ['rust-analyzer'] = {},
+   },
+ }
+
+-- nvim_lsp.eslint.setup({})
 
 nvim_lsp.lua_ls.setup {
   capabilities = capabilities,
@@ -82,12 +71,6 @@ nvim_lsp.lua_ls.setup {
     },
   },
 }
-
--- nvim_lsp.tailwindcss.setup {
---   on_attach = on_attach,
---   capabilities = capabilities
--- }
-
 nvim_lsp.cssls.setup {
   capabilities = capabilities
 }
@@ -106,7 +89,6 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 )
 
 
-local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<Tab>'] = nil,
@@ -127,29 +109,48 @@ lsp.setup_nvim_cmp({
   mapping = cmp_mappings
 })
 
- -- lsp.setup_nvim_cmp({
- --
- --   { name = 'buffer', keyword_length = 3 },
- --   mapping = cmp_mappings,
- --   window = {
- --     completion = cmp.config.window.bordered(),
- --     documentation = cmp.config.window.bordered(),
- --   },
- --   formatting = {
- --     fields = { 'abbr', 'kind', 'menu' },
- --     format = require('lspkind').cmp_format({
- --       preset = 'default',
- --       mode = 'true',         -- show only symbol annotations
- --       maxwidth = 50,         -- prevent the popup from showing more than provided characters
- --       ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
- --     })
- --   }
- -- })
+ lsp.setup_nvim_cmp({
+
+ -- { name = 'buffer', keyword_length = 3 },
+  preselect = 'item',
+  completion = {
+    completeopt = 'menu,menuone,noinsert',
+    autocomplete = false
+  },
+   mapping = cmp_mappings,
+   window = {
+     completion = cmp.config.window.bordered(),
+     documentation = cmp.config.window.bordered(),
+
+   },
+   formatting = {
+     fields = { 'abbr', 'kind', 'menu' },
+     format = require('lspkind').cmp_format({
+       maxheight = 400,
+       preset = 'default',
+       mode = 'true',         -- show only symbol annotations
+       maxwidth = 80,         -- prevent the popup from showing more than provided characters
+       ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
+     })
+   },
+  snippet = {
+   expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'nvim_lsp_signature_help' },
+    { name = 'luasnip' },
+    { name = 'path' }
+    -- { name = 'buffer' },
+  },
+ })
 
 lsp.set_preferences({
   suggest_lsp_servers = false,
   sign_icons = {
-    error = 'E',
+   error = 'E',
     warn = 'W',
     hint = 'H',
     info = 'I'
@@ -165,9 +166,7 @@ lsp.on_attach(function(client, bufnr)
   -- Use an on_attach function to only map the following keys
   -- after the language server attaches to the current buffer
   -- client.resolved_capabilities.document_formatting = false
-  vim.keymap.set('n', '<space>lf', function()
-    vim.lsp.buf.format { async = true }
-  end, { buffer = bufnr, desc = "[L]anguage [F]ormat" })
+
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
   vim.keymap.set("n", "<leader>e", function() vim.diagnostic.open_float() end, opts)
