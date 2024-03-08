@@ -5,8 +5,7 @@ return {
   },
 
    config = function ()
-local status, ts = pcall(require, "nvim-treesitter.configs")
- if (not status) then return end
+local ts = require("nvim-treesitter.configs")
 
  ts.setup {
    modules = {},
@@ -15,21 +14,20 @@ local status, ts = pcall(require, "nvim-treesitter.configs")
    sync_install = false,
    highlight = {
      enable = true,
-     additional_vim_regex_highlighting = false,
+     additional_vim_regex_highlighting = {"markdown"},
    },
    indent = {
      enable = true,
-     disable = {},
    },
    ensure_installed = {
      "markdown",
      "markdown_inline",
-     "typescript",
-     "javascript",
-     "json",
      "yaml",
      "css",
      "html",
+ "vimdoc",
+        "javascript", "typescript", "lua", "rust",
+                "jsdoc",
    },
    context_commentstring = {
      enable         = true,
@@ -84,11 +82,22 @@ local status, ts = pcall(require, "nvim-treesitter.configs")
      keymaps = {
        init_selection = '<c-space>',
        node_incremental = '<c-space>',
-       scope_incremental = '<c-s>',
+       scope_incremental = '<c-space>',
        node_decremental = '<M-space>',
      },
    },
  }
+
+ local treesitter_parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+        treesitter_parser_config.templ = {
+            install_info = {
+                url = "https://github.com/vrischmann/tree-sitter-templ.git",
+                files = {"src/parser.c", "src/scanner.c"},
+                branch = "master",
+            },
+        }
+
+        vim.treesitter.language.register("templ", "templ")
    end
   
 }

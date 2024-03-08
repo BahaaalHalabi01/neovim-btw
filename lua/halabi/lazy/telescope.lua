@@ -25,6 +25,14 @@ local builtin = require("telescope.builtin")
 }]]--
 
 
+  vim.keymap.set('n', '<leader>pws', function()
+            local word = vim.fn.expand("<cword>")
+            builtin.grep_string({ search = word })
+        end)
+        vim.keymap.set('n', '<leader>pWs', function()
+            local word = vim.fn.expand("<cWORD>")
+            builtin.grep_string({ search = word })
+        end)
 vim.keymap.set("n", "<leader>q", function()
     builtin.marks()
 end,{desc='builtin marks'})
@@ -57,9 +65,7 @@ vim.keymap.set("n", "<leader>ws", function()
 builtin.lsp_workspace_symbols()
 end, {desc = 'workspace symbol'})
 
-
 end
-
 }
 
 
