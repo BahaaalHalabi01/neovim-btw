@@ -1,6 +1,9 @@
-local status, git = pcall(require, "git")
-if (not status) then return end
+return {
+"dinhhuy258/git.nvim", 
+  config = function()
+local git = require("git")
 
+vim.keymap.set("n","<leader>gg",vim.cmd.LazyGit);
 git.setup({
   keymaps = {
     -- Open blame window
@@ -8,4 +11,6 @@ git.setup({
     -- Open file/folder in git repository
     browse = "<Leader>go",
   }
-})
+}) 
+  end
+}

@@ -1,5 +1,4 @@
-require("halabi.base")
+require("halabi.set")
 require("halabi.remaps")
-require("halabi.packer")
-require("halabi.mason")
+require("halabi.lazy_init")
 require("halabi.lspconfig")

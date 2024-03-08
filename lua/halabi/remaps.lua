@@ -21,7 +21,7 @@ vim.g.mapleader = " "
 
 vim.keymap.set("n", "<C-\\>", "<cmd>vsplit<cr>", { desc = "Vertical Split" })
 
-vim.keymap.set("n", "<C-s>", "<Cmd>w!<CR><Esc>", { desc = "save" })
+-- vim.keymap.set("n", "<C-s>", "<Cmd>w!<CR><Esc>", { desc = "save" })
 -- vim.keymap.set("i", "<C-s>", "<Cmd>w!<CR><Esc>", { desc = " save insert" })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -83,3 +83,4 @@ end)
 
 vim.keymap.set({ "n", "x" }, "[p", '<Cmd>exe "put! " . v:register<CR>', { desc = "Paste Above" })
 vim.keymap.set({ "n", "x" }, "]p", '<Cmd>exe "put "  . v:register<CR>', { desc = "Paste Below" })
+vim.keymap.set({ "n"}  , "<leader>pv", '<Cmd>Ex<Cr>', { desc = "explorer" })

@@ -1,4 +1,5 @@
 local opt = vim.opt -- to set options
+
 vim.cmd("autocmd!")
 
 opt.guicursor =

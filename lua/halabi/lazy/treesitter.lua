@@ -1,4 +1,11 @@
- local status, ts = pcall(require, "nvim-treesitter.configs")
+return {
+ 'nvim-treesitter/nvim-treesitter',
+   build = ":TSUpdate",
+  opts = {
+  },
+
+   config = function ()
+local status, ts = pcall(require, "nvim-treesitter.configs")
  if (not status) then return end
 
  ts.setup {
@@ -82,4 +89,6 @@
      },
    },
  }
-
+   end
+  
+}
