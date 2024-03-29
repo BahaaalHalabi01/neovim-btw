@@ -20,7 +20,7 @@ return {
           "node%_modules/.*",
           ".git/*",
           "*.lock",
-          "pubic/*"
+          "public/.*"
         }
       },
     })
