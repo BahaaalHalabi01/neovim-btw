@@ -8,6 +8,16 @@ I ended up with this.
 
 My _Final_ Improved Neovim config
 
+
+## How to use this config
+
+### Dependencies to install before:
+- Lazygit https://github.com/jesseduffield/lazygit
+- Ripgrep https://github.com/BurntSushi/ripgrep
+- Node ( i would recommend) https://github.com/nvm-sh/nvm
+- Nerdfonts https://github.com/ryanoasis/nerd-fonts
+
+
 ## Todos
 
 [] Highlight color
