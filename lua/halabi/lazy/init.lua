@@ -3,6 +3,7 @@ return {
   "kdheepak/lazygit.nvim",
   "kyazdani42/nvim-web-devicons",
   "folke/tokyonight.nvim",
+  {"sbdchd/neoformat",lazy = false},
   { 'wakatime/vim-wakatime', lazy = false },
   {"JoosepAlviste/nvim-ts-context-commentstring",lazy = false},
   { "nvim-lua/plenary.nvim", name = "plenary" },
