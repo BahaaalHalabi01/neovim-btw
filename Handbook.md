@@ -1,7 +1,7 @@
 ## Find and replace everywhere:
 
-- grep using telescope ( ;r ) 
-- open in quickfix ( C-q ) 
+- i use <leader>e for telescope, doesn't sound nice, but it was the easiest on my fingers
+- open in quickfix ( C-q )
 - run command "cdo s/query_string/replacement_string/gc
 - press enter
 

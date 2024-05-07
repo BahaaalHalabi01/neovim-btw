@@ -89,3 +89,8 @@ vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = "format" })
 vim.keymap.set({ "n", "x" }, "[p", '<Cmd>exe "put! " . v:register<CR>', { desc = "Paste Above" })
 vim.keymap.set({ "n", "x" }, "]p", '<Cmd>exe "put "  . v:register<CR>', { desc = "Paste Below" })
 vim.keymap.set({ "n" }, "<leader>pv", '<Cmd>Ex<Cr>', { desc = "explorer" })
+
+-- buffers, maybe just write and run command ?
+vim.keymap.set("n", "<leader>bd",'<cmd>bd<CR>', { desc = "delete buffer" })
+vim.keymap.set("n", "<leader>bp",'<cmd>bp<CR>', { desc = "previous buffer" })
+vim.keymap.set("n", "<leader>bn",'<cmd>bn<CR>', { desc = "next buffer" })
