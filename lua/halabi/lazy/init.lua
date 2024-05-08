@@ -8,7 +8,6 @@ return {
   { 'wakatime/vim-wakatime', lazy = false },
   {"JoosepAlviste/nvim-ts-context-commentstring",lazy = false},
   { "nvim-lua/plenary.nvim", name = "plenary" },
-  "mbbill/undotree",
   "tpope/vim-fugitive",
   "folke/which-key.nvim",
   "laytan/cloak.nvim"

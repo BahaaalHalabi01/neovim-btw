@@ -14,8 +14,9 @@ vim.o.pumwidth = 8
 opt.nu = true
 opt.relativenumber = true
 -- undo tree add later
- -- .opt.backup = false
- -- .opt.undodir = os.getenv("HOME") .. "/./undodir"
+opt.backup = false
+opt.undodir = os.getenv("HOME") .. "/./undodir"
+
 opt.undofile = true
 
 vim.completeopt = 'menuone,noselect'
