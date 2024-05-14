@@ -16,10 +16,13 @@ return {
   config = function()
     local cmp = require('cmp')
     local cmp_lsp = require("cmp_nvim_lsp")
+    local lsp_capabilities= vim.lsp.protocol.make_client_capabilities()
+    lsp_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+
     local capabilities = vim.tbl_deep_extend(
       "force",
       {},
-      vim.lsp.protocol.make_client_capabilities(),
+      lsp_capabilities,
       cmp_lsp.default_capabilities())
 
     require("fidget").setup({})
@@ -28,6 +31,7 @@ return {
       ensure_installed = {
         "cssls",
         "tsserver",
+        "svelte"
       },
       handlers = {
         function(server_name) -- default handler (optional)
@@ -104,6 +108,28 @@ return {
     vim.keymap.set({"i","n"}, "<C-h>", function() vim.lsp.buf.signature_help() end)
     vim.keymap.set("n", "<leader>lca", function() vim.lsp.buf.code_action() end)
     vim.keymap.set("n", "<leader>lca", function() vim.lsp.buf.code_action() end)
-  end
 
+
+    function on_attach(on_attach)
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(args)
+          local buffer = args.buf
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          on_attach(client, buffer)
+        end,
+      })
+    end
+
+    on_attach(function(client, bufnr)
+      vim.api.nvim_create_autocmd("BufWritePost", {
+        pattern = { "*.js", "*.ts" },
+        callback = function(ctx)
+          if client.name == "svelte" then
+          client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
+          end
+        end,
+      })
+    end)
+
+  end,
 }
