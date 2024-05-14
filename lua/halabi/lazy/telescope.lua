@@ -243,7 +243,10 @@ return {
           "node%_modules/.*",
           ".git/*",
           "*.lock",
-          "public/.*"
+          "public/.*",
+          "static/.*",
+          'assets/.*'
+
         }
       },
     })
