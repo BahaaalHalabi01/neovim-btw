@@ -252,7 +252,7 @@ return {
     })
 
 
-    vim.keymap.set('n', '<leader>f', function()
+    vim.keymap.set('n', '<leader>fw', function()
       local word = vim.fn.expand("<cword>")
       builtin.grep_string({ search = word })
     end)
