@@ -20,13 +20,12 @@ My _Final_ Improved Neovim config
 
 ## Todos
 
-[] Highlight color
-[] Add global prettierd config
-[] format with prettierd with language server ( currenlty have two keybindings,sometimes working sometimes not i am loosing my mind)
-[] Add home page
-[] Show diagnostic of a single file in a seperate window
-[] Better mappings for moving through diagnostics
-[] Fix session manager window not popping out and selecting by enter
-[] Make go to defination better??
-
-[x] Remove format on save
+- [] Highlight color
+- [] Add global prettierd config
+- [] format with prettierd with language server ( currenlty have two keybindings,sometimes working sometimes not i am loosing my mind)
+- [] Add home page
+- [] Show diagnostic of a single file in a seperate window
+- [] Better mappings for moving through diagnostics
+- [] Fix session manager window not popping out and selecting by enter
+- [] Make go to defination better??
+- [x] Remove format on save
