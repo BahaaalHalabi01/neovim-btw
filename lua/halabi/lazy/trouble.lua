@@ -21,7 +21,7 @@ return {
       require("trouble").next({ skip_groups = true, jump = true });
     end, opts)
     opts.desc = 'trouble '
-    vim.keymap.set("n", "<leader>t","<Cmd>TroubleToggle<Cr>", opts)
+    vim.keymap.set("n", "<leader>tt","<Cmd>TroubleToggle<Cr>", opts)
     opts.desc = 'diagnostic workspace'
     vim.keymap.set("n", "<leader>ew", function() require("trouble").open("workspace_diagnostics") end, opts)
     opts.desc = 'diagnostic document'

@@ -9,6 +9,7 @@ return {
   {"JoosepAlviste/nvim-ts-context-commentstring",lazy = false},
   { "nvim-lua/plenary.nvim", name = "plenary" },
   "tpope/vim-fugitive",
+ 'nvim-telescope/telescope-ui-select.nvim',
   "folke/which-key.nvim",
   "laytan/cloak.nvim"
 }

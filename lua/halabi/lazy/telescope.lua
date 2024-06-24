@@ -25,6 +25,11 @@ return {
 
 
     telescope.setup({
+      extensions = {
+        ["ui-select"] = {
+          require('telescope.themes').get_dropdown {}
+        }
+      },
       defaults = {
         layout_strategy = "flex",
         layout_config = {
@@ -291,5 +296,9 @@ return {
     vim.keymap.set("n", "<leader>lw", function()
       builtin.lsp_workspace_symbols()
     end, { desc = 'workspace symbol' })
+
+    require("telescope").load_extension("ui-select")
   end
+
 }
+

@@ -27,8 +27,8 @@ vim.keymap.set("n", "<C-s>", "<Cmd>w!<CR><Esc>", { desc = "save" })
 vim.keymap.set("i", "<C-s>", "<Cmd>w!<CR><Esc>", { desc = " save insert" })
 
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -91,6 +91,8 @@ vim.keymap.set({ "n", "x" }, "]p", '<Cmd>exe "put "  . v:register<CR>', { desc =
 vim.keymap.set({ "n" }, "<leader>fs", '<Cmd>Ex<Cr>', { desc = "explorer" })
 
 -- buffers, maybe just write and run command ?
-vim.keymap.set("n", "<leader>d",'<cmd>bd<CR>', { desc = "delete buffer" })
+vim.keymap.set("n", "<leader>bd",'<cmd>bd<CR>', { desc = "delete buffer" })
 vim.keymap.set("n", "<leader>bp",'<cmd>bp<CR>', { desc = "previous buffer" })
+vim.keymap.set("n", "<leader>ba",'<cmd>%bd|e#<CR>', { desc = "delete all except this" })
+
 vim.keymap.set("n", "<leader>bn",'<cmd>bn<CR>', { desc = "next buffer" })

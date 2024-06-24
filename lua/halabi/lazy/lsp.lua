@@ -17,7 +17,6 @@ return {
     local cmp = require('cmp')
     local cmp_lsp = require("cmp_nvim_lsp")
     local lsp_capabilities= vim.lsp.protocol.make_client_capabilities()
-    lsp_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
 
     local capabilities = vim.tbl_deep_extend(
       "force",
@@ -31,7 +30,8 @@ return {
       ensure_installed = {
         "cssls",
         "tsserver",
-        "svelte"
+        "eslint_d"
+        -- "svelte"
       },
       handlers = {
         function(server_name) -- default handler (optional)
@@ -39,20 +39,37 @@ return {
             capabilities = capabilities
           }
         end,
-
-        ["lua_ls"] = function()
-          local lspconfig = require("lspconfig")
-          lspconfig.lua_ls.setup {
-            capabilities = capabilities,
-            settings = {
-              Lua = {
-                diagnostics = {
-                  globals = { "vim", "it", "describe", "before_each", "after_each" },
-                }
-              }
-            }
-          }
-        end,
+        --  ['svelte'] = function()
+        --   local capabilities_svelte = capabilities 
+        --    capabilities_svelte.workspace.didChangeWatchedFiles.dynamicRegistration = true
+        --    local lspconfig = require("lspconfig")
+        --    lspconfig.svelte.setup {
+        --      capabilities =capabilities_svelte ,
+        --    }
+        --  end,
+        --  ["lua_ls"] = function()
+        --    local lspconfig = require("lspconfig")
+        --    lspconfig.lua_ls.setup {
+        --      capabilities = capabilities,
+        --      settings = {
+        --        Lua = {
+        --          diagnostics = {
+        --            globals = { "vim", "it", "describe", "before_each", "after_each" },
+        --          }
+        --        }
+        --      }
+        --    }
+        --  end,
+        --
+        -- ["gopls"] = function()
+        --    local lspconfig = require("lspconfig")
+        --    lspconfig.gopls.setup {
+        --      capabilities = capabilities,
+        --     cmd = {"gopls"},
+        --     filetypes = {"go","gomod","gowork","gotmpl"},
+        --   }
+        --
+        -- end,
       }
     })
 
