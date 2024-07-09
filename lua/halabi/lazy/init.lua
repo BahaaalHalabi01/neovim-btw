@@ -11,5 +11,5 @@ return {
   "tpope/vim-fugitive",
  'nvim-telescope/telescope-ui-select.nvim',
   "folke/which-key.nvim",
-  "laytan/cloak.nvim"
+  "laytan/cloak.nvim",
 }

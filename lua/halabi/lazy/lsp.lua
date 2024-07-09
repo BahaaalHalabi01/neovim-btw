@@ -16,7 +16,7 @@ return {
   config = function()
     local cmp = require('cmp')
     local cmp_lsp = require("cmp_nvim_lsp")
-    local lsp_capabilities= vim.lsp.protocol.make_client_capabilities()
+    local lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
 
     local capabilities = vim.tbl_deep_extend(
       "force",
@@ -30,8 +30,6 @@ return {
       ensure_installed = {
         "cssls",
         "tsserver",
-        "eslint_d"
-        -- "svelte"
       },
       handlers = {
         function(server_name) -- default handler (optional)
@@ -40,26 +38,26 @@ return {
           }
         end,
         --  ['svelte'] = function()
-        --   local capabilities_svelte = capabilities 
+        --   local capabilities_svelte = capabilities
         --    capabilities_svelte.workspace.didChangeWatchedFiles.dynamicRegistration = true
         --    local lspconfig = require("lspconfig")
         --    lspconfig.svelte.setup {
         --      capabilities =capabilities_svelte ,
         --    }
         --  end,
-        --  ["lua_ls"] = function()
-        --    local lspconfig = require("lspconfig")
-        --    lspconfig.lua_ls.setup {
-        --      capabilities = capabilities,
-        --      settings = {
-        --        Lua = {
-        --          diagnostics = {
-        --            globals = { "vim", "it", "describe", "before_each", "after_each" },
-        --          }
-        --        }
-        --      }
-        --    }
-        --  end,
+        ["lua_ls"] = function()
+          local lspconfig = require("lspconfig")
+          lspconfig.lua_ls.setup {
+            capabilities = capabilities,
+            settings = {
+              Lua = {
+                diagnostics = {
+                  globals = { "vim", "it", "describe", "before_each", "after_each" },
+                }
+              }
+            }
+          }
+        end,
         --
         -- ["gopls"] = function()
         --    local lspconfig = require("lspconfig")
@@ -72,6 +70,7 @@ return {
         -- end,
       }
     })
+
 
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
@@ -107,9 +106,9 @@ return {
     })
 
     vim.diagnostic.config({
-      -- update_in_insert = true,
+      update_in_insert = true,
       float = {
-        focusable = false,
+        focusable =true,
         style = "minimal",
         border = "rounded",
         source = "always",
@@ -122,9 +121,10 @@ return {
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end)
     vim.keymap.set("n", "<leader>w", function() vim.diagnostic.open_float() end)
     vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end)
-    vim.keymap.set({"i","n"}, "<C-h>", function() vim.lsp.buf.signature_help() end)
+    vim.keymap.set({ "i", "n" }, "<C-h>", function() vim.lsp.buf.signature_help() end)
     vim.keymap.set("n", "<leader>lca", function() vim.lsp.buf.code_action() end)
     vim.keymap.set("n", "<leader>lca", function() vim.lsp.buf.code_action() end)
+
 
   end,
 }
