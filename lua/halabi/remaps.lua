@@ -88,11 +88,12 @@ vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = "format" })
 
 vim.keymap.set({ "n", "x" }, "[p", '<Cmd>exe "put! " . v:register<CR>', { desc = "Paste Above" })
 vim.keymap.set({ "n", "x" }, "]p", '<Cmd>exe "put "  . v:register<CR>', { desc = "Paste Below" })
-vim.keymap.set({ "n" }, "<leader>fs", '<Cmd>Ex<Cr>', { desc = "explorer" })
+-- vim.keymap.set({ "n" }, "<leader>fs", '<Cmd>Ex<Cr>', { desc = "explorer" })
+vim.keymap.set("n", "<leader>fs", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- buffers, maybe just write and run command ?
-vim.keymap.set("n", "<leader>bd",'<cmd>bd<CR>', { desc = "delete buffer" })
-vim.keymap.set("n", "<leader>bp",'<cmd>bp<CR>', { desc = "previous buffer" })
-vim.keymap.set("n", "<leader>ba",'<cmd>%bd|e#<CR>', { desc = "delete all except this" })
+vim.keymap.set("n", "<leader>bd", '<cmd>bd<CR>', { desc = "delete buffer" })
+vim.keymap.set("n", "<leader>bp", '<cmd>bp<CR>', { desc = "previous buffer" })
+vim.keymap.set("n", "<leader>ba", '<cmd>%bd|e#<CR>', { desc = "delete all except this" })
 
-vim.keymap.set("n", "<leader>bn",'<cmd>bn<CR>', { desc = "next buffer" })
+vim.keymap.set("n", "<leader>bn", '<cmd>bn<CR>', { desc = "next buffer" })

@@ -8,6 +8,7 @@ return {
     local telescope = require("telescope")
     local builtin = require("telescope.builtin")
     local action_layout = require("telescope.actions.layout")
+    local open_with_trouble = require("trouble.sources.telescope").open
 
     local Layout = require("nui.layout")
     local Popup = require("nui.popup")
@@ -25,11 +26,7 @@ return {
 
 
     telescope.setup({
-      extensions = {
-        ["ui-select"] = {
-          require('telescope.themes').get_dropdown {}
-        }
-      },
+      extensions = { },
       defaults = {
         layout_strategy = "flex",
         layout_config = {
@@ -237,10 +234,12 @@ return {
         end,
         mappings = {
           n = {
-            ["<M-p>"] = action_layout.toggle_preview
+            ["<M-p>"] = action_layout.toggle_preview,
+            ["<c-t>"] = open_with_trouble
           },
           i = {
             ["<C-u>"] = false,
+            ["<c-t>"] = open_with_trouble,
             ["<M-p>"] = action_layout.toggle_preview
           },
         },
@@ -297,8 +296,6 @@ return {
       builtin.lsp_workspace_symbols()
     end, { desc = 'workspace symbol' })
 
-    require("telescope").load_extension("ui-select")
   end
 
 }
-

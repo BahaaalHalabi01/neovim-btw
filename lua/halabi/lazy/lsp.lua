@@ -108,7 +108,7 @@ return {
     vim.diagnostic.config({
       update_in_insert = true,
       float = {
-        focusable =true,
+        focusable = true,
         style = "minimal",
         border = "rounded",
         source = "always",
@@ -123,8 +123,11 @@ return {
     vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end)
     vim.keymap.set({ "i", "n" }, "<C-h>", function() vim.lsp.buf.signature_help() end)
     vim.keymap.set("n", "<leader>lca", function() vim.lsp.buf.code_action() end)
-    vim.keymap.set("n", "<leader>lca", function() vim.lsp.buf.code_action() end)
 
-
+    vim.api.nvim_create_autocmd("QuickFixCmdPost", {
+      callback = function()
+        vim.cmd([[Trouble qflist open]])
+      end,
+    })
   end,
 }

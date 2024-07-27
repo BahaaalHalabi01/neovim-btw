@@ -2,7 +2,36 @@ return {
   "folke/trouble.nvim",
   opts = {}, -- for default options, refer to the configuration section for custom setup.
   cmd = "Trouble",
+  modes = {
+    diagnostics_buffer = {
+      mode = "diagnostics", -- inherit from diagnostics mode
+      filter = { buf = 0 }, -- filter diagnostics to the current buffer
+    },
+    preview_float = {
+      mode = "diagnostics",
+      preview = {
+        type = "float",
+        relative = "editor",
+        border = "rounded",
+        title = "Preview",
+        title_pos = "center",
+        position = { 0, -2 },
+        size = { width = 0.3, height = 0.3 },
+        zindex = 200,
+      },
+    },
+  },
   keys = {
+    {
+      "<leader>]d",
+      "<cmd>Trouble diagnostics next<cr>",
+      desc = "Diagnostics Next (Trouble)",
+    },
+    {
+      "<leader>[d",
+      "<cmd>Trouble diagnostics prev<cr>",
+      desc = "Diagnostics Back (Trouble)",
+    },
     {
       "<leader>tt",
       "<cmd>Trouble diagnostics toggle<cr>",
@@ -15,7 +44,7 @@ return {
     },
     {
       "<leader>ts",
-      "<cmd>Trouble symbols toggle focus=false<cr>",
+      "<cmd> Trouble symbols toggle pinned=true win.relative=win win.position=right <cr>",
       desc = "Symbols (Trouble)",
     },
     {
@@ -35,44 +64,43 @@ return {
     },
   },
 }
-  -- "folke/trouble.nvim",
-  --
-  -- config = function()
-  --   local trbl = require("trouble")
-  --
-  --   trbl.setup({
-  --     severity = vim.diagnostic.severity.ERROR,
-  --     padding = false,
-  --     auto_close = true,
-  --     use_diagnostic_signs = true
-  --   })
-  --
-  --
-  --   local opts = { noremap = true, silent = true, desc = '' }
-  --   opts.desc = "diagnostic_jump_prev"
-  --   vim.keymap.set('n', '<leader>r', function()
-  --     require("trouble").next({ skip_groups = true, jump = true, });
-  --   end, opts)
-  --   opts.desc = "diagnostic_jump_next"
-  --   vim.keymap.set('n', '<leader>p', function()
-  --     require("trouble").next({ skip_groups = true, jump = true });
-  --   end, opts)
-  --   opts.desc = 'trouble '
-  --   vim.keymap.set("n", "<leader>tt","<Cmd>TroubleToggle<Cr>", opts)
-  --   opts.desc = 'diagnostic workspace'
-  --   vim.keymap.set("n", "<leader>ew", function() require("trouble").open("workspace_diagnostics") end, opts)
-  --   opts.desc = 'diagnostic document'
-  --   vim.keymap.set("n", "<leader>ed", function() require("trouble").open("document_diagnostics") end, opts)
-  --   opts.desc = 'quick fix'
-  --   vim.keymap.set("n", "<leader>la", function() require("trouble").open("quickfix") end, opts)
-  --   opts.desc = 'location list'
-  --   vim.keymap.set("n", "<leader>lx", function() require("trouble").open("loclist") end, opts)
-  --   opts.desc = 'go references'
-  --   vim.keymap.set("n", "gr", function() require("trouble").open("lsp_references") end, opts)
-  --   opts.desc = 'go type definations'
-  --   vim.keymap.set("n", "gt", function() require("trouble").open("lsp_type_definitions") end, opts)
-  --   opts.desc = 'go declartions'
-  --   vim.keymap.set("n", "gd", function() require("trouble").open("lsp_definitions") end, opts)
-  --   vim.keymap.set("n", "<C-c>", "<Cmd>TroubleClose<Cr>", opts)
-  -- end,
-
+-- "folke/trouble.nvim",
+--
+-- config = function()
+--   local trbl = require("trouble")
+--
+--   trbl.setup({
+--     severity = vim.diagnostic.severity.ERROR,
+--     padding = false,
+--     auto_close = true,
+--     use_diagnostic_signs = true
+--   })
+--
+--
+--   local opts = { noremap = true, silent = true, desc = '' }
+--   opts.desc = "diagnostic_jump_prev"
+--   vim.keymap.set('n', '<leader>r', function()
+--     require("trouble").next({ skip_groups = true, jump = true, });
+--   end, opts)
+--   opts.desc = "diagnostic_jump_next"
+--   vim.keymap.set('n', '<leader>p', function()
+--     require("trouble").next({ skip_groups = true, jump = true });
+--   end, opts)
+--   opts.desc = 'trouble '
+--   vim.keymap.set("n", "<leader>tt","<Cmd>TroubleToggle<Cr>", opts)
+--   opts.desc = 'diagnostic workspace'
+--   vim.keymap.set("n", "<leader>ew", function() require("trouble").open("workspace_diagnostics") end, opts)
+--   opts.desc = 'diagnostic document'
+--   vim.keymap.set("n", "<leader>ed", function() require("trouble").open("document_diagnostics") end, opts)
+--   opts.desc = 'quick fix'
+--   vim.keymap.set("n", "<leader>la", function() require("trouble").open("quickfix") end, opts)
+--   opts.desc = 'location list'
+--   vim.keymap.set("n", "<leader>lx", function() require("trouble").open("loclist") end, opts)
+--   opts.desc = 'go references'
+--   vim.keymap.set("n", "gr", function() require("trouble").open("lsp_references") end, opts)
+--   opts.desc = 'go type definations'
+--   vim.keymap.set("n", "gt", function() require("trouble").open("lsp_type_definitions") end, opts)
+--   opts.desc = 'go declartions'
+--   vim.keymap.set("n", "gd", function() require("trouble").open("lsp_definitions") end, opts)
+--   vim.keymap.set("n", "<C-c>", "<Cmd>TroubleClose<Cr>", opts)
+-- end,
