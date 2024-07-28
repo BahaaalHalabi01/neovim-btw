@@ -117,12 +117,17 @@ return {
       },
     })
 
+
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end)
     vim.keymap.set("n", "<leader>w", function() vim.diagnostic.open_float() end)
     vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end)
     vim.keymap.set({ "i", "n" }, "<C-h>", function() vim.lsp.buf.signature_help() end)
-    vim.keymap.set("n", "<leader>lca", function() vim.lsp.buf.code_action() end)
+    vim.keymap.set("n", "<leader>lca", function()
+      vim.lsp.buf.code_action()
+    end)
+    vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
 
     vim.api.nvim_create_autocmd("QuickFixCmdPost", {
       callback = function()

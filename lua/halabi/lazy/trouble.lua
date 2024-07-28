@@ -23,16 +23,6 @@ return {
   },
   keys = {
     {
-      "<leader>]d",
-      "<cmd>Trouble diagnostics next<cr>",
-      desc = "Diagnostics Next (Trouble)",
-    },
-    {
-      "<leader>[d",
-      "<cmd>Trouble diagnostics prev<cr>",
-      desc = "Diagnostics Back (Trouble)",
-    },
-    {
       "<leader>tt",
       "<cmd>Trouble diagnostics toggle<cr>",
       desc = "Diagnostics (Trouble)",

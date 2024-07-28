@@ -26,22 +26,47 @@ return {
 
 
     telescope.setup({
-      extensions = { },
+      extensions = {
+        ["ui-select"] = {
+          require("telescope.themes").get_dropdown {
+          }
+        }
+      },
       defaults = {
         layout_strategy = "flex",
         layout_config = {
           horizontal = {
             size = {
-              width = "92%",
-              height = "92%",
+              width = "75%",
+              height = "75%",
             },
           },
           vertical = {
             size = {
-              width = "92%",
-              height = "92%",
+              width = "100%",
+              height = "100%",
             },
           },
+        },
+        mappings = {
+          n = {
+            ["<M-p>"] = action_layout.toggle_preview,
+            ["<c-t>"] = open_with_trouble
+          },
+          i = {
+            ["<C-u>"] = false,
+            ["<c-t>"] = open_with_trouble,
+            ["<M-p>"] = action_layout.toggle_preview
+          },
+        },
+        file_ignore_patterns = {
+          "node%_modules/.*",
+          ".git/*",
+          "*.lock",
+          "public/.*",
+          "static/.*",
+          'assets/.*'
+
         },
         create_layout = function(picker)
           local border = {
@@ -232,26 +257,7 @@ return {
 
           return TSLayout(layout)
         end,
-        mappings = {
-          n = {
-            ["<M-p>"] = action_layout.toggle_preview,
-            ["<c-t>"] = open_with_trouble
-          },
-          i = {
-            ["<C-u>"] = false,
-            ["<c-t>"] = open_with_trouble,
-            ["<M-p>"] = action_layout.toggle_preview
-          },
-        },
-        file_ignore_patterns = {
-          "node%_modules/.*",
-          ".git/*",
-          "*.lock",
-          "public/.*",
-          "static/.*",
-          'assets/.*'
 
-        }
       },
     })
 
@@ -296,6 +302,7 @@ return {
       builtin.lsp_workspace_symbols()
     end, { desc = 'workspace symbol' })
 
+    require("telescope").load_extension("ui-select")
   end
 
 }
