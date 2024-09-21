@@ -21,10 +21,9 @@ vim.g.mapleader = " "
 
 vim.keymap.set("n", "<C-\\>", "<cmd>vsplit<cr>", { desc = "Vertical Split" })
 
--- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+-- vim.keymap.set("n", "<leader>tm", "<cmd>silent !tms<CR>")
 
 vim.keymap.set("n", "<C-s>", "<Cmd>w!<CR><Esc>", { desc = "save" })
-vim.keymap.set("i", "<C-s>", "<Cmd>w!<CR><Esc>", { desc = " save insert" })
 
 
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -35,7 +34,7 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
-vim.keymap.set("v", "y", "y0<Esc>", { desc = "Yank and reposition cursor" })
+-- vim.keymap.set("v", "y", "y0<Esc>", { desc = "Yank and reposition cursor" })
 
 vim.keymap.set("n", "<esc>", function()
   local function close_floating()
@@ -69,9 +68,9 @@ vim.keymap.set("n", "<leader>s", [[:%s/<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Le
 
 vim.keymap.set('v', "<C-r>", [[y<ESC>:%s@\<<C-r><C-w>\>@<C-r><C-w>@gI<Left><Left><Left>]])
 
-vim.keymap.set("n", "<leader><leader>", function()
-  vim.cmd("so")
-end)
+-- vim.keymap.set("n", "<leader><leader>", function()
+--   vim.cmd("so")
+-- end)
 
 
 -- These two keep the search in the middle of the screen.
@@ -89,11 +88,10 @@ vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = "format" })
 vim.keymap.set({ "n", "x" }, "[p", '<Cmd>exe "put! " . v:register<CR>', { desc = "Paste Above" })
 vim.keymap.set({ "n", "x" }, "]p", '<Cmd>exe "put "  . v:register<CR>', { desc = "Paste Below" })
 -- vim.keymap.set({ "n" }, "<leader>fs", '<Cmd>Ex<Cr>', { desc = "explorer" })
-vim.keymap.set("n", "<leader>fs", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "<leader>hs", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- buffers, maybe just write and run command ?
 vim.keymap.set("n", "<leader>bd", '<cmd>bd<CR>', { desc = "delete buffer" })
 vim.keymap.set("n", "<leader>bp", '<cmd>bp<CR>', { desc = "previous buffer" })
 vim.keymap.set("n", "<leader>ba", '<cmd>%bd|e#<CR>', { desc = "delete all except this" })
-
 vim.keymap.set("n", "<leader>bn", '<cmd>bn<CR>', { desc = "next buffer" })

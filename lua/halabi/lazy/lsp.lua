@@ -14,7 +14,6 @@ return {
   },
 
   config = function()
-    local cmp = require('cmp')
     local cmp_lsp = require("cmp_nvim_lsp")
     local lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
 
@@ -71,40 +70,6 @@ return {
       }
     })
 
-
-    local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
-    cmp.setup({
-      snippet = {
-        expand = function(args)
-          require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-        end,
-      },
-      formatting = {
-        fields = { 'abbr', 'kind', 'menu' },
-        format = require('lspkind').cmp_format({
-          maxheight = 400,
-          preset = 'default',
-          mode = 'true',         -- show only symbol annotations
-          maxwidth = 80,         -- prevent the popup from showing more than provided characters
-          ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
-        })
-      },
-      mapping = cmp.mapping.preset.insert({
-        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-        ["<C-Space>"] = cmp.mapping.complete(),
-      }),
-      sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'nvim_lsp_signature_help' },
-        { name = 'luasnip' }, -- For luasnip users.
-        { name = 'path' },
-      })
-
-    })
-
     vim.diagnostic.config({
       update_in_insert = true,
       float = {
@@ -116,7 +81,6 @@ return {
         prefix = "",
       },
     })
-
 
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end)
