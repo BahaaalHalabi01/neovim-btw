@@ -16,21 +16,31 @@ return {
         title = "Preview",
         title_pos = "center",
         position = { 0, -2 },
-        size = { width = 0.3, height = 0.3 },
+        size = { width = 0.1, height = 0.1 },
         zindex = 200,
       },
     },
   },
   keys = {
     {
-      "<leader>tt",
+      "<leader>et",
       "<cmd>Trouble diagnostics toggle<cr>",
       desc = "Diagnostics (Trouble)",
     },
     {
       "<leader>ed",
-      "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+      "<cmd>Trouble diagnostics toggle focus=true filter.buf=0<cr>",
       desc = "Buffer Diagnostics (Trouble)",
+    },
+    {
+      "<leader>ef",
+      "<cmd>Trouble diagnostics first<cr>",
+      desc = "Buffer Diagnostics (Trouble)",
+    },
+    {
+      "<leader>cl",
+      "<cmd>Trouble diagnostics preview_float  <cr>",
+      desc = "LSP Definitions / references / ... (Trouble)",
     },
     {
       "<leader>ts",

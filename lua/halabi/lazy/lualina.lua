@@ -29,20 +29,20 @@ return {
         lualine_b = {
           { 'diagnostics',
             sources = { "nvim_diagnostic" },
-            symbols = { error = ' ', warn = ' ', info = ' ',
+            symbols = { error = ' ', warn = ' ', info = 'I',
               hint = ' ' }
           },
         },
         lualine_c = {
           {
             'filename',
-            file_status = true, -- displays file status (readonly status, modified status)
-            path = 1,           -- 0 = just filename, 1 = relative path, 2 = absolute path
+            file_status = true,  -- displays file status (readonly status, modified status)
+            path = 1,            -- 0 = just filename, 1 = relative path, 2 = absolute path
             padding = 1
 
           }
         },
-        lualine_x = {{ 'searchcount', search_cnt, maxcount = 999, timeout = 500 }},
+        lualine_x = { { 'searchcount', search_cnt, maxcount = 999, timeout = 500 } },
         lualine_y = {},
         lualine_z = { 'filetype' },
       },

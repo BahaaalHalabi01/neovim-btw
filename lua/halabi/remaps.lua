@@ -10,7 +10,9 @@ keymap.set('v', 'x', '"_x', { desc = "delete and don't yank" })
 keymap.set('n', '+', '<C-a>')
 keymap.set('n', '-', '<C-x>')
 
-keymap.set('n', '<C-n>', '')
+-- roemove auto complete if cmp not active
+-- keymap.set({'n','i'}, '<C-n>', '')
+-- keymap.set({'n','i'}, '<C-p>', '')
 
 keymap.set('n', 'db', 'vb"_di', { desc = "Delete a word backwards and enter insert" })
 keymap.set('n', 'dw', 'vw"_di', { desc = "Delete a word infront and enter insert" })
@@ -35,16 +37,15 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 -- vim.keymap.set("v", "y", "y0<Esc>", { desc = "Yank and reposition cursor" })
-
 vim.keymap.set("n", "<esc>", function()
-  local function close_floating()
-    for _, win in pairs(vim.api.nvim_list_wins()) do
-      if vim.api.nvim_win_get_config(win).relative == "win" then
-        vim.api.nvim_win_close(win, false)
-      end
-    end
-  end
-  close_floating()
+  -- local function close_floating()
+  --   for _, win in pairs(vim.api.nvim_list_wins()) do
+  --     if vim.api.nvim_win_get_config(win).relative == "win" then
+  --       vim.api.nvim_win_close(win, false)
+  --     end
+  --   end
+  -- end
+  -- close_floating()
   vim.cmd(":noh")
 end, { silent = true, desc = "Remove Search Highlighting, Dismiss Popups" })
 
@@ -83,7 +84,6 @@ vim.keymap.set("n", "N", function()
 end)
 
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = "format" })
-
 
 vim.keymap.set({ "n", "x" }, "[p", '<Cmd>exe "put! " . v:register<CR>', { desc = "Paste Above" })
 vim.keymap.set({ "n", "x" }, "]p", '<Cmd>exe "put "  . v:register<CR>', { desc = "Paste Below" })

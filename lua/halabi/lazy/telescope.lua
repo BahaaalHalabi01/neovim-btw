@@ -252,7 +252,7 @@ return {
           function layout:update()
             local box, box_kind = get_box()
             prepare_layout_parts(layout, box_kind)
-            layout_update(self, { size = get_layout_size(box_kind) }, box)
+            layout_update(self, { size = get_layout_size(box_kind) }, lox)
           end
 
           return TSLayout(layout)
