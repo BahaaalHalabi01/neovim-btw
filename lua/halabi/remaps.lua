@@ -83,7 +83,6 @@ vim.keymap.set("n", "N", function()
   vim.cmd("silent normal! Nzz")
 end)
 
-vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = "format" })
 
 vim.keymap.set({ "n", "x" }, "[p", '<Cmd>exe "put! " . v:register<CR>', { desc = "Paste Above" })
 vim.keymap.set({ "n", "x" }, "]p", '<Cmd>exe "put "  . v:register<CR>', { desc = "Paste Below" })
