@@ -25,10 +25,10 @@ return {
 
       cmp.setup({
         sources = {
-          { name = 'nvim_lsp', priority = 1000 },
-          { name = 'path',     priority = 250 },
-          { name = "buffer",   priority = 500 },
+          { name = 'nvim_lsp', priority = 1200 },
           { name = 'luasnip',  priority = 700 },
+          { name = "buffer",   priority = 500 },
+          { name = 'path',     priority = 250 },
         },
         mapping = cmp.mapping.preset.insert({
           ["<C-n>"] = cmp.mapping.select_next_item { select = true },
@@ -50,15 +50,15 @@ return {
           format = require('lspkind').cmp_format({
             maxheight = 500,
             preset = 'default',
-            show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+            show_labelDetails = false, -- show labelDetails in menu. Disabled by default
             -- mode = 'true',         -- show only symbol annotations
-            maxwidth = 300,        -- prevent the popup from showing more than provided characters
-            ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
-            -- menu = ({
-            --   nvim_lsp = "[LSP]",
-            --   buffer = "[Buffer]",
-            --   luasnip = "[LuaSnip]",
-            -- })
+            maxwidth = 300,            -- prevent the popup from showing more than provided characters
+            ellipsis_char = '...',     -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
+            menu = ({
+              nvim_lsp = "[LSP]",
+              buffer = "[Buffer]",
+              luasnip = "[LuaSnip]",
+            })
           }),
         },
         snippet = {
@@ -76,14 +76,25 @@ return {
     dependencies = {
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'williamboman/mason.nvim' },
+      "j-hui/fidget.nvim",
+      "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-path",
+      {
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        version = "v2.3", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        -- install jsregexp (optional!).
+        build = "make install_jsregexp"
+      },
+      "saadparwaiz1/cmp_luasnip",
+      "hrsh7th/cmp-buffer",
       { 'williamboman/mason-lspconfig.nvim' },
     },
     config = function()
       local lsp_zero = require('lsp-zero')
 
       local lsp_attach = function(client, bufnr)
-        local opts = { buffer = bufnr }
-
         vim.diagnostic.config({
           update_in_insert = true,
           float = {
@@ -96,18 +107,19 @@ return {
           },
         })
 
-        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end)
-        vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end)
+        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, { desc = "definition", buffer = bufnr })
+        vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, { desc = "hover", buffer = bufnr })
         -- vim.keymap.set("n", "<leader>.", function() vim.diagnostic.open_float() end)
-        vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end)
-        vim.keymap.set({ "i", "n" }, "<C-h>", function() vim.lsp.buf.signature_help() end)
-        vim.keymap.set("n", "<leader>la", function()
-          vim.lsp.buf.code_action()
-        end)
-        vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
-        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+        vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end, { desc = "rename", buffer = bufnr })
+        vim.keymap.set({ "i", "n" }, "<C-h>", function() vim.lsp.buf.signature_help() end,
+          { desc = "signature help", buffer = bufnr })
+        vim.keymap.set("n", "<leader>a", function() vim.lsp.buf.code_action() end,
+          { desc = "code action", buffer = bufnr })
+        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "goto next", buffer = bufnr })
+        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "goto prev", buffer = bufnr })
         -- vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = "format" })
-        vim.keymap.set({ 'n', 'x' }, '<leader>lf', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', { desc = 'format' })
+        vim.keymap.set({ 'n', 'x' }, '<leader>lf', '<cmd>lua vim.lsp.buf.format({async = true})<cr>',
+          { desc = 'format', buffer = bufnr })
 
         vim.keymap.set("n", "<leader>.", function()
           vim.diagnostic.open_float(0, {
@@ -121,13 +133,13 @@ return {
               "WinLeave",
             },
           })
-        end, { desc = 'open float' })
+        end, { desc = 'open float diagnostic', buffer = bufnr })
 
-        vim.api.nvim_create_autocmd("QuickFixCmdPost", {
-          callback = function()
-            vim.cmd([[Trouble qflist open]])
-          end,
-        })
+        -- vim.api.nvim_create_autocmd("QuickFixCmdPost", {
+        --   callback = function()
+        --     vim.cmd([[Trouble qflist open]])
+        --   end,
+        -- })
       end
 
       lsp_zero.extend_lspconfig({
@@ -170,23 +182,52 @@ return {
             }
           end,
           ['rust_analyzer'] = function()
-            local lspconfig = require("lspconfig")
-            lspconfig.rust_analyzer.setup {
-              settings = {
-                ['rust_analyzer'] = {
-                  checkOnSave = {
-                    allFeatures = true,
-                    overrideCommand = {
-                      'cargo', 'clippy', '--workspace', '--message-format=json',
-                      '--all-targets', '--all-features'
-                    }
-                  }
-                }
-              }
-            }
+            -- local lspconfig = require("lspconfig")
+            -- lspconfig.rust_analyzer.setup {
+            --   settings = {
+            --     ['rust_analyzer'] = {
+            --       checkOnSave = {
+            --         allFeatures = true,
+            --       }
+            --     }
+            --   }
+            -- }
           end,
         }
       })
+
+      vim.g.rustaceanvim = {
+        server = {
+          cmd = function()
+            local mason_registry = require('mason-registry')
+            local ra_binary = mason_registry.is_installed('rust-analyzer')
+                -- This may need to be tweaked, depending on the operating system.
+                and mason_registry.get_package('rust-analyzer'):get_install_path() .. "/rust-analyzer"
+                or "rust-analyzer"
+            return { ra_binary } -- You can add args to the list, such as '--log-file'
+          end,
+        },
+      }
+
+      vim.g.rustaceanvim = {
+        tools = {
+          -- ...
+        },
+        server = {
+          on_attach = function(client, bufnr)
+            -- Set keybindings, etc. here.
+          end,
+          default_settings = {
+            -- rust-analyzer language server configuration
+            ['rust-analyzer'] = {
+            },
+          },
+          -- ...
+        },
+        dap = {
+          -- ...
+        },
+      }
     end,
   }
 }

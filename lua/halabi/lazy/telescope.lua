@@ -28,8 +28,8 @@ return {
     telescope.setup({
       extensions = {
         ["ui-select"] = {
-          require("telescope.themes").get_dropdown {
-          }
+          -- require("telescope.themes").get_dropdown {
+          -- }
         }
       },
       defaults = {
@@ -66,6 +66,7 @@ return {
           "public/.*",
           "static/.*",
           'assets/.*'
+
 
         },
         create_layout = function(picker)
@@ -302,7 +303,7 @@ return {
       builtin.lsp_workspace_symbols()
     end, { desc = 'workspace symbol' })
 
-    require("telescope").load_extension("ui-select")
+    -- require("telescope").load_extension("ui-select")
   end
 
 }

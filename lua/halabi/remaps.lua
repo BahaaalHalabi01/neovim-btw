@@ -52,7 +52,6 @@ end, { silent = true, desc = "Remove Search Highlighting, Dismiss Popups" })
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "past without yank" })
-
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
