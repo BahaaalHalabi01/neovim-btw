@@ -153,8 +153,8 @@ return {
       require("mason").setup()
       require("mason-lspconfig").setup({
         ensure_installed = {
-          "cssls",
-          "tsserver",
+          -- "cssls",
+          -- "tsserver",
           "rust_analyzer"
         },
         handlers = {
