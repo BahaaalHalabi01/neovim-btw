@@ -9,11 +9,6 @@ return {
   { "JoosepAlviste/nvim-ts-context-commentstring", lazy = false },
   { "nvim-lua/plenary.nvim",                       name = "plenary" },
   {
-    'mrcjkb/rustaceanvim',
-    version = '^5', -- Recommended
-    lazy = false,   -- This plugin is already lazy
-  },
-  {
     "supermaven-inc/supermaven-nvim",
     config = function()
       require("supermaven-nvim").setup({
@@ -21,7 +16,7 @@ return {
     end,
   },
   "tpope/vim-fugitive",
-  -- 'nvim-telescope/telescope-ui-select.nvim',
+  'nvim-telescope/telescope-ui-select.nvim',
   "folke/which-key.nvim",
   "laytan/cloak.nvim",
 }

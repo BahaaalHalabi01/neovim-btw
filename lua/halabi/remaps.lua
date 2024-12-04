@@ -1,6 +1,6 @@
 local keymap = vim.keymap
 
-vim.keymap.set('n', '<leader>lp', '<Cmd>:Neoformat<CR>', { desc = "[P]retier" })
+-- vim.keymap.set('n', '<leader>lp', '<Cmd>:Neoformat<CR>', { desc = "[P] format code prettier" })
 --
 -- i love this thank you
 keymap.set('n', 'x', '"_x', { desc = "delete and don't yank" })

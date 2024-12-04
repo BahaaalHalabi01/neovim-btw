@@ -42,8 +42,14 @@ return {
 
           }
         },
-        lualine_x = { { 'searchcount', search_cnt, maxcount = 999, timeout = 500 } },
-        lualine_y = {},
+        lualine_x = {
+-- {
+--         require("noice").api.statusline.mode.get,
+--         cond = require("noice").api.statusline.mode.has,
+--         color = { fg = "#ff9e64" },
+--       }
+        },
+        lualine_y = { { 'searchcount', search_cnt, maxcount = 999, timeout = 500 } },
         lualine_z = { 'filetype' },
       },
     }

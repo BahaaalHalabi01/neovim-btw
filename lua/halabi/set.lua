@@ -1,7 +1,7 @@
 local opt = vim.opt -- to set options
 
 -- vim.cmd("autocmd!")
-
+opt.termguicolors = true
 opt.guicursor =
 "n-v-c-sm:block-nCursor-blinkwait50-blinkon50-blinkoff50,i-ci-ve:ver25-Cursor-blinkon100-blinkoff100,r-cr-o:hor20"
 vim.scriptencoding = 'utf-8'

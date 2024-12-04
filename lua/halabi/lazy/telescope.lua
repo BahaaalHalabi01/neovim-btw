@@ -28,8 +28,8 @@ return {
     telescope.setup({
       extensions = {
         ["ui-select"] = {
-          -- require("telescope.themes").get_dropdown {
-          -- }
+          require("telescope.themes").get_dropdown {
+          }
         }
       },
       defaults = {
@@ -62,11 +62,9 @@ return {
         file_ignore_patterns = {
           "node%_modules/.*",
           ".git/*",
+          ".dist/*",
+          "target/*",
           "*.lock",
-          "public/.*",
-          "static/.*",
-          'assets/.*'
-
 
         },
         create_layout = function(picker)

@@ -8,12 +8,11 @@ vim.keymap.set(
   end,
   { silent = true, buffer = bufnr }
 )
-
 vim.keymap.set(
   "n",
-  "<leader>lo",
+  "K", -- Override Neovim's built-in hover keymap with rustaceanvim's hover actions
   function()
-    vim.cmd.RustLsp('openDocs')
+    vim.cmd.RustLsp({ 'hover', 'actions' })
   end,
   { silent = true, buffer = bufnr }
 )
