@@ -20,12 +20,21 @@ My _Final_ Improved Neovim config
 
 ## Todos
 
+most of these are done, and some are not needed
+
 - [] Highlight color
 - [] Add global prettierd config
-- [] format with prettierd with language server ( currenlty have two keybindings,sometimes working sometimes not i am loosing my mind)
-- [] Add home page
-- [] Show diagnostic of a single file in a seperate window
-- [] Better mappings for moving through diagnostics
-- [] Fix session manager window not popping out and selecting by enter
-- [] Make go to defination better??
+- [x] format with prettierd with language server ( currenlty have two keybindings,sometimes working sometimes not i am loosing my mind)
+- [x] Add home page
+- [x] Show diagnostic of a single file in a seperate window
+- [x] Better mappings for moving through diagnostics
+- [x] Fix session manager window not popping out and selecting by enter
+- [x] Make go to defination better??
 - [x] Remove format on save
+
+new stuff i want to make
+
+- [ ] Fix my git flow, i like lazygit but i make a lot of mistakes, maybe try fugitive
+- [ ] improve Lsp completions, i get too much from buffer completions, can i limit it ? maybe also order differently, i want lsp to be first
+- [ ] Create an installer for this config would be cool
+
