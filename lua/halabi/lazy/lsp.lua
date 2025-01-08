@@ -46,7 +46,8 @@ return {
         }),
 
         formatting = {
-          -- fields = { 'abbr', 'kind', 'menu', },
+          fields = { 'abbr', 'kind', 'menu', },
+          expandable_indicator = true,
           format = require('lspkind').cmp_format({
             maxheight = 200,
             mode = 'symbol',
@@ -123,7 +124,7 @@ return {
             focusable = true,
             style = "minimal",
             border = "rounded",
-            source = "always",
+            source = "if_many",
             header = "",
             prefix = "",
           },
@@ -144,7 +145,7 @@ return {
           { desc = 'format', buffer = 0 })
 
         vim.keymap.set("n", "<leader>.", function()
-          vim.diagnostic.open_float(0, {
+          vim.diagnostic.open_float({
             scope = "cursor",
             focusable = true,
             close_events = {
@@ -192,6 +193,7 @@ return {
       require("fidget").setup({})
       require("mason").setup()
       require("mason-lspconfig").setup({
+        automatic_installation = false,
         ensure_installed = {
           "lua_ls",
           "ts_ls",

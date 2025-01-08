@@ -25,6 +25,7 @@ return {
         lualine_a = {
           { 'mode', padding = 2 },
           'branch',
+          'filetype'
         },
         lualine_b = {
           { 'diagnostics',
@@ -36,21 +37,21 @@ return {
         lualine_c = {
           {
             'filename',
-            file_status = true,  -- displays file status (readonly status, modified status)
-            path = 1,            -- 0 = just filename, 1 = relative path, 2 = absolute path
+            file_status = true, -- displays file status (readonly status, modified status)
+            path = 1,           -- 0 = just filename, 1 = relative path, 2 = absolute path
             padding = 1
 
           }
         },
         lualine_x = {
--- {
---         require("noice").api.statusline.mode.get,
---         cond = require("noice").api.statusline.mode.has,
---         color = { fg = "#ff9e64" },
---       }
+          {
+            require("noice").api.statusline.mode.get,
+            cond = require("noice").api.statusline.mode.has,
+            color = { fg = "#ff9e64" },
+          }
         },
-        lualine_y = { { 'searchcount', search_cnt, maxcount = 999, timeout = 500 } },
-        lualine_z = { 'filetype' },
+        lualine_y = {  'searchcount' },
+        lualine_z = { 'tabs' },
       },
     }
   end

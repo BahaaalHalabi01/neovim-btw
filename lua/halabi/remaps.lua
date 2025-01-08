@@ -18,7 +18,6 @@ keymap.set('n', 'db', 'vb"_di', { desc = "Delete a word backwards and enter inse
 keymap.set('n', 'dw', 'vw"_di', { desc = "Delete a word infront and enter insert" })
 
 
-vim.keymap.set("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<cr>", { desc = "Git toggle line blame" })
 vim.g.mapleader = " "
 
 vim.keymap.set("n", "<C-\\>", "<cmd>vsplit<cr>", { desc = "Vertical Split" })
@@ -34,8 +33,8 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+-- vim.keymap.set("n", "n", "nzzzv")
+-- vim.keymap.set("n", "N", "Nzzzv")
 -- vim.keymap.set("v", "y", "y0<Esc>", { desc = "Yank and reposition cursor" })
 vim.keymap.set("n", "<esc>", function()
   -- local function close_floating()
@@ -90,6 +89,12 @@ vim.keymap.set("n", "<leader>hs", "<CMD>Oil<CR>", { desc = "Open parent director
 
 -- buffers, maybe just write and run command ?
 vim.keymap.set("n", "<leader>bd", '<cmd>bd<CR>', { desc = "delete buffer" })
-vim.keymap.set("n", "<leader>bp", '<cmd>bp<CR>', { desc = "previous buffer" })
+-- vim.keymap.set("n", "<leader>bp", '<cmd>bp<CR>', { desc = "previous buffer" })
 vim.keymap.set("n", "<leader>ba", '<cmd>%bd|e#<CR>', { desc = "delete all except this" })
-vim.keymap.set("n", "<leader>bn", '<cmd>bn<CR>', { desc = "next buffer" })
+-- vim.keymap.set("n", "<leader>bn", '<cmd>bn<CR>', { desc = "next buffer" })
+--
+-- tabs can be useful idk, also this mappnig is not comfortable 
+ vim.keymap.set("n", "<leader>bn", '<cmd>tabnew<CR>', { desc = "new tab" })
+ vim.keymap.set("n", "<leader>bl", '<cmd>tabnext<CR>', { desc = "next tab" })
+ vim.keymap.set("n", "<leader>bh", '<cmd>tabprevious<CR>', { desc = "previous tab" })
+ vim.keymap.set("n", "<leader>br", '<cmd>tabclose<CR>', { desc = "close tab" })
