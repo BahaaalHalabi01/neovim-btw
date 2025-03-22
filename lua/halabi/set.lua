@@ -13,7 +13,6 @@ vim.o.pumwidth = 8
 
 opt.nu = true
 opt.relativenumber = true
--- undo tree add later
 opt.backup = false
 opt.undodir = os.getenv("HOME") .. "/./undodir"
 
@@ -27,7 +26,7 @@ opt.signcolumn = "yes"
 opt.isfname:append("@-@")
 opt.clipboard = "unnamedplus"
 opt.updatetime = 50
-opt.timeoutlen = 300  -- The time before a key sequence should complete
+opt.timeoutlen = 150  -- The time before a key sequence should complete
 opt.splitright = true -- Put new windows right of current
 opt.colorcolumn = "80"
 vim.g.mapleader = " "
@@ -38,13 +37,13 @@ opt.hlsearch = true
 -- opt.incsearch = true
 opt.backup = false
 opt.showcmd = true
-opt.cmdheight = 1
+opt.cmdheight = 0
 opt.laststatus = 2
 opt.expandtab = true
 opt.scrolloff = 8
 opt.inccommand = 'split'
--- opt.ignorecase =false-- Case insensitive searching UNLESS /C or capital in search
-opt.ignorecase = true
+opt.ignorecase =false-- Case insensitive searching UNLESS /C or capital in search
+-- opt.ignorecase = true
 opt.smarttab = true
 opt.breakindent = true
 opt.shiftwidth = 2

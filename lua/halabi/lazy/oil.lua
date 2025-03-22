@@ -83,7 +83,7 @@ return {
       use_default_keymaps = true,
       view_options = {
         -- Show files and directories that start with "."
-        show_hidden =true,
+        show_hidden = true,
         -- This function defines what is considered a "hidden" file
         is_hidden_file = function(name, bufnr)
           return vim.startswith(name, ".")
@@ -100,9 +100,10 @@ return {
         sort = {
           -- sort order can be "asc" or "desc"
           -- see :help oil-columns to see which columns are sortable
-          { "size",        "asc" },
-          { "mtime",       "asc" },
-          { "type",        "asc" },
+          { "name",  "asc" },
+          { "size",  "asc" },
+          { "mtime", "asc" },
+          { "type",  "asc" },
 
         },
       },

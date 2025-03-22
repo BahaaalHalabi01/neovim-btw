@@ -56,10 +56,10 @@ return {
       swap = {
         enable = true,
         swap_next = {
-          ['<leader>a'] = '@parameter.inner',
+          ['<leader>ta'] = '@parameter.inner',
         },
         swap_previous = {
-          ['<leader>A'] = '@parameter.inner',
+          ['<leader>tA'] = '@parameter.inner',
         },
       },
       textobjects = {
@@ -81,9 +81,9 @@ return {
         enable = true,
         keymaps = {
           init_selection = '<c-space>',
-          node_incremental = '<c-space>',
-          scope_incremental = '<c-space>',
-          node_decremental = '<M-space>',
+          node_incremental = 'grn',
+          scope_incremental = 'grc',
+          node_decremental = 'grm',
         },
       },
     }

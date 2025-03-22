@@ -207,14 +207,14 @@ return {
               require("lspconfig")[server_name].setup {}
             end
           end,
-          -- ['svelte'] = function()
-          --   local capabilities_svelte = capabilities
-          --   capabilities_svelte.workspace.didChangeWatchedFiles.dynamicRegistration = true
-          --   local lspconfig = require("lspconfig")
-          --   lspconfig.svelte.setup {
-          --     capabilities = capabilities_svelte,
-          --   }
-          -- end,
+           ['svelte'] = function()
+             local capabilities_svelte = capabilities
+             capabilities_svelte.workspace.didChangeWatchedFiles.dynamicRegistration = true
+             local lspconfig = require("lspconfig")
+             lspconfig.svelte.setup {
+               capabilities = capabilities_svelte,
+             }
+           end,
           ["lua_ls"] = function()
             local lspconfig = require("lspconfig")
             lspconfig.lua_ls.setup {
@@ -239,10 +239,10 @@ return {
           ['ts_ls'] = function()
             local lspconfig = require("lspconfig")
             capabilities.documentFormattingProvider = false
-            lspconfig.tsserver.setup {
+            lspconfig.ts_ls.setup {
               capabilities = capabilities,
               settings = {
-                tsserver = {
+                ts_ls = {
                   enable = true,
                   tsserverPath = "typescript-language-server",
                 }

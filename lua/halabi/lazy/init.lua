@@ -1,8 +1,8 @@
 return {
-  'ryanoasis/vim-devicons',
-  'mortepau/codicons.nvim',
-  "folke/tokyonight.nvim",
-  "MunifTanjim/nui.nvim",
+  -- 'ryanoasis/vim-devicons',
+  -- 'mortepau/codicons.nvim',
+  -- "folke/tokyonight.nvim",
+  -- "MunifTanjim/nui.nvim",
   { "sbdchd/neoformat",                            lazy = false },
   { 'wakatime/vim-wakatime',                       lazy = false },
   { "JoosepAlviste/nvim-ts-context-commentstring", lazy = false },
@@ -10,5 +10,5 @@ return {
   -- "tpope/vim-fugitive",
   'nvim-telescope/telescope-ui-select.nvim',
   "folke/which-key.nvim",
-  "laytan/cloak.nvim",
+  -- "laytan/cloak.nvim",
 }

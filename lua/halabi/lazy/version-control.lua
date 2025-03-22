@@ -7,30 +7,26 @@ return {
     end
   },
   {
+    "dinhhuy258/git.nvim",
+    config = function()
+      local git = require("git")
 
+      git.setup({
+        keymaps = {
+          -- Open blame window
+          blame = "<Leader>gb",
+          -- Open file/folder in git repository
+          browse = "<Leader>go",
+        }
+      })
+    end
   }
 
 }
 
 
--- @todo for anthor time maybe
--- return {
--- "dinhhuy258/git.nvim",
---   config = function()
--- local git = require("git")
---
--- git.setup({
---   keymaps = {
---     -- Open blame window
---     blame = "<Leader>gb",
---     -- Open file/folder in git repository
---     browse = "<Leader>go",
---   }
--- })
---   end
--- }
---
---
+
+
 -- @todo i do not like fugitive, read more about how to use it
 -- return {
 -- "tpope/vim-fugitive",
