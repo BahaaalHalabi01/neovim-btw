@@ -193,11 +193,12 @@ return {
       require("fidget").setup({})
       require("mason").setup()
       require("mason-lspconfig").setup({
+        automatic_enable = true,
         automatic_installation = false,
         ensure_installed = {
           "lua_ls",
           "ts_ls",
-          -- "rust_analyzer"
+          "rust_analyzer"
         },
         handlers = {
           function(server_name) -- default handler (optional)
