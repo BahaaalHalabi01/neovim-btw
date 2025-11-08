@@ -1,3 +1,5 @@
+vim.g.augment_workspace_folders = { '~/Desktop/topparcel/system' }
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -12,5 +14,4 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({spec = "halabi.lazy",change_detection= {notify = false}})
-
+require("lazy").setup({ spec = "halabi.lazy", change_detection = { notify = false } })

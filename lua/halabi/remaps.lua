@@ -93,8 +93,8 @@ vim.keymap.set("n", "<leader>bd", '<cmd>bd<CR>', { desc = "delete buffer" })
 vim.keymap.set("n", "<leader>ba", '<cmd>%bd|e#<CR>', { desc = "delete all except this" })
 -- vim.keymap.set("n", "<leader>bn", '<cmd>bn<CR>', { desc = "next buffer" })
 --
--- tabs can be useful idk, also this mappnig is not comfortable 
- vim.keymap.set("n", "<leader>bn", '<cmd>tabnew<CR>', { desc = "new tab" })
- vim.keymap.set("n", "<leader>bl", '<cmd>tabnext<CR>', { desc = "next tab" })
- vim.keymap.set("n", "<leader>bh", '<cmd>tabprevious<CR>', { desc = "previous tab" })
- vim.keymap.set("n", "<leader>br", '<cmd>tabclose<CR>', { desc = "close tab" })
+-- tabs can be useful idk, also this mappnig is not comfortable
+vim.keymap.set("n", "<leader>bn", '<cmd>tabnew<CR>', { desc = "new tab" })
+vim.keymap.set("n", "<leader>bl", '<cmd>tabnext<CR>', { desc = "next tab" })
+vim.keymap.set("n", "<leader>bh", '<cmd>tabprevious<CR>', { desc = "previous tab" })
+vim.keymap.set("n", "<leader>br", '<cmd>tabclose<CR>', { desc = "close tab" })

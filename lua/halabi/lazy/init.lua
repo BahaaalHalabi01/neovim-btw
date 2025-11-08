@@ -11,4 +11,13 @@ return {
   'nvim-telescope/telescope-ui-select.nvim',
   "folke/which-key.nvim",
   "laytan/cloak.nvim",
+  -- { 'augmentcode/augment.vim' },
+  {
+    'echasnovski/mini.surround',
+    branch = 'stable',
+    main = 'mini.surround',
+    opts = {
+      search_method = 'cover_or_next',
+    }
+  }
 }
